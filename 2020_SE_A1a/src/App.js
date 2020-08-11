@@ -1,19 +1,12 @@
-import React, {useState} from "react";
-import Tweet from "./tweet"
+import React, { useState } from "react";
+import Navigation from './components/Navbar';
+import Routes from './Routes';
 
 function App() {
-  const [user, setUsers] = useState([
-    {name: 'Ed', message: 'Hi'},
-    {name: 'John', message: 'Hello'},
-    {name: 'Rob', message: 'Hey'}
-  ])
-
   return(
-    <div className="app">
-      {user.map(user =>(
-        <Tweet name={user.name} message={user.message}/>
-      ))}
-      <button></button>
+    <div className="App">
+      <Navigation />
+      <Routes />
     </div>
   );
 }
