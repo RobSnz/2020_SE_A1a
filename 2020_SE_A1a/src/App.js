@@ -13,6 +13,7 @@ function App() {
       {user.map(user =>(
         <Tweet name={user.name} message={user.message}/>
       ))}
+      <button></button>
     </div>
   );
 }
