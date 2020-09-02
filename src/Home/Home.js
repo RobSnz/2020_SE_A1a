@@ -1,8 +1,7 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import { Button } from 'react-bootstrap';
 import history from './../history';
 import "./Home.css";
-import Tweet from "../tweet"
 
 export default class Home extends Component {
   render() {
