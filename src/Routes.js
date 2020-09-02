@@ -3,7 +3,7 @@ import { Router, Switch, Route } from "react-router-dom";
 
 import About from "./About/About";
 import Contact from "./Contact/Contact";
-import Products from "./Product/Products";
+import Login from "./Login/Login";
 import Home from "./Home/Home";
 import history from './history';
 
@@ -15,7 +15,7 @@ export default class Routes extends Component {
                     <Route path="/" exact component={Home} />
                     <Route path="/About" component={About} />
                     <Route path="/Contact" component={Contact} />
-                    <Route path="/Products" component={Products} />
+                    <Route path="/Login" component={Login} />
                 </Switch>
             </Router>
         )
