@@ -11,3 +11,11 @@
 .Home .lander p {
     color: #999;
 }
+
+.Home .input-box {
+    font-size: 30px;
+}
+
+.Home .datepicker {
+    width: 110px;
+}
