@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Button } from 'react-bootstrap';
-import history from './../history';
+import { Button } from 'react-bootstrap'; //unused import
+import history from './../history'; //unused import
 import "./Home.css";
-import Calendar from 'react-calendar';
+import Calendar from 'react-calendar'; //unused import
 import DatePicker from 'react-datepicker';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 import "react-datepicker/dist/react-datepicker.css";

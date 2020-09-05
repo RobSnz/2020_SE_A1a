@@ -53,7 +53,7 @@ class Login extends React.Component {
                                 <ul>
                                     <BsFillLockFill size="40px" style={{ verticalAlign: 'center' }}/>
                                     <input onKeyDown={ (e) => { if(e.keyCode === 13) this.handleSubmit(e);}}
-                                        type='text' placeholder='Password' onChange={ this.handlePassword }
+                                        type='password' placeholder='Password' onChange={ this.handlePassword }
                                         value={ this.state.password } className={ styles.inputStyle }
                                     />
                                 </ul>
