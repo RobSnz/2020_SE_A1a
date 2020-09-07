@@ -7,11 +7,15 @@ import { BsFillPersonFill } from 'react-icons/bs';
 class Login extends React.Component {
     constructor(props) {
         super(props);
-
+        this.childContainer = React.createRef();
         this.state={ email: '', password: ''};
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEmail = this.handleEmail.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
+        toggleChild = () => {
+            console.log("toggleChild");
+            this.childContainer.current.classList.toggle("hidden");
+        };
     }
 
     handleSubmit(event) {
@@ -58,7 +62,8 @@ class Login extends React.Component {
                                     />
                                 </ul>
                             </div>
-                            <input type="submit" value="Log in" className={ styles.submitButton }/>
+                            <input type="button" value="Log in" className={ styles.loginButton }/>
+                            <input type="button" value="Sign up" onClick={this.toggleChild} className={ styles.signupButton }/>
                         </form>
                     </Card>
                 </div>

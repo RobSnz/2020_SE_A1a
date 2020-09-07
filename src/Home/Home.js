@@ -67,7 +67,7 @@ class Home extends React.Component {
               <ul>
                 <input onKeyDown={ (e) => { if(e.keyCode === 13) this.handleSubmit(e);}}
                   type='text' placeholder='What are you looking for?' onChange={ this.handleSearch }
-                  value={ this.state.email } style={{height: "40px", paddingBottom: "6px"}}
+                  value={ this.state.email } style={{height: "42px", paddingBottom: "6px"}}
                 />
                 <button onClick={this.openFromDatePicker} style={{fontSize: "20px", height:"40px"}}>
                   DATE FROM
