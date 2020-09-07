@@ -1,22 +1,29 @@
 import React from 'react';
 import { Card } from 'react-bootstrap';
+import { Component } from "react";
 import styles from '../mystyle.module.css';
 import { BsFillLockFill } from 'react-icons/bs';
 import { BsFillPersonFill } from 'react-icons/bs';
+class SomeChildComponent extends React.Component {
+    render() {
+      return <div>just a child</div>;
+    }
+  }
 
 class Login extends React.Component {
     constructor(props) {
         super(props);
-        this.childContainer = React.createRef();
+        this.mainBox = React.createRef();
         this.state={ email: '', password: ''};
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEmail = this.handleEmail.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
-        toggleChild = () => {
-            console.log("toggleChild");
-            this.childContainer.current.classList.toggle("hidden");
-        };
     }
+
+    toggleChild = () => {
+        console.log("toggleChild");
+        this.mainBox.current.classList.toggle("hidden");
+    };
 
     handleSubmit(event) {
         event.preventDefault();
@@ -62,8 +69,8 @@ class Login extends React.Component {
                                     />
                                 </ul>
                             </div>
-                            <input type="button" value="Log in" className={ styles.loginButton }/>
-                            <input type="button" value="Sign up" onClick={this.toggleChild} className={ styles.signupButton }/>
+                            <input type="button" value="Log in" ref={this.mainBox} onClick={this.toggleChild} className={ styles.loginButton }/>
+                            <SomeChildComponent />
                         </form>
                     </Card>
                 </div>
