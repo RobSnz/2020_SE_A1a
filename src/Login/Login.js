@@ -69,8 +69,8 @@ class Login extends React.Component {
                                     />
                                 </ul>
                             </div>
-                            <input type="button" value="Log in" ref={this.mainBox} onClick={this.toggleChild} className={ styles.loginButton }/>
-                            <SomeChildComponent />
+                            <input type="button" value="Log in" className={ styles.loginButton }/>
+                            <input type="button" value="Sign up" className={ styles.signupButton }/>
                         </form>
                     </Card>
                 </div>
