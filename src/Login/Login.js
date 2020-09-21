@@ -86,7 +86,7 @@ class Login extends React.Component {
                                         />
                                     </ul>
                                 </div>
-                                <input type="submit" value="Log in" className={ styles.submitButton }/>
+                                <input type="submit" value="Log in" className={ styles.signupButton }/>
                             </form>
                         </Card>
                         <div>
@@ -172,7 +172,7 @@ class Login extends React.Component {
             shownView = <RegisterView />;
         }
         return (
-            <div>{shownView}</div>
+            <div>{ shownView }</div>
         );
     }
 }
