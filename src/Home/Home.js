@@ -6,6 +6,7 @@ import Calendar from 'react-calendar'; //unused import
 import DatePicker from 'react-datepicker';
 import { RiArrowDropDownLine } from 'react-icons/ri';
 import "react-datepicker/dist/react-datepicker.css";
+import Article from "../Article/Article.js";
 
 class Home extends React.Component {
   constructor(props) {
@@ -82,6 +83,7 @@ class Home extends React.Component {
               </ul>
             </div>
         </form>
+        <Article></Article>
         </div>
       </div>
     );

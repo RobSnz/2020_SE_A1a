@@ -37,12 +37,12 @@ connection.once('open', () => {
   console.log("MongoDB database connection established successfully");
 })
 
+const articleRouter = require('./backend/routes/article');
+
+app.use('/article', articleRouter);
+
 server.listen(PORT, err => {
   if(err) throw err;
 
   console.log('Server started');
-})
-
-if(dev) {
-  app.use(morgan('dev'));
-}
+});

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-var Article = require('../models/article.model');
+let Article = require('../models/article.model');
 
 router.route('/').get((req, res) => {
     Article.find()
@@ -8,17 +8,14 @@ router.route('/').get((req, res) => {
 });
 
 router.route('/add').post((req, res) => {
-    const title = req.body.title;
-    const year = req.body.year;
-
     const newArticle = new Article({
-        title,
-        year
+        title: "hello",
+        year: "chicken"
     });
-
+    
     newArticle.save()
     .then(() => res.json('article added!'))
-    .catch(() => res.status(400).json('err: ' + err));
+    .catch(err => res.status(400).json('err: ' + err));
 });
 
 module.exports = router;
