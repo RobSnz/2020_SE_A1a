@@ -2,12 +2,14 @@ import React from "react";
 import "./Home.css";
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/AddCircle';
+import RemoveIcon from '@material-ui/icons/RemoveCircle'
 import SearchIcon from '@material-ui/icons/SearchSharp';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import DatePicker from "react-datepicker";
+import ListGroup from 'react-bootstrap/ListGroup';
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -88,16 +90,16 @@ class Home extends React.Component {
                 </InputGroup.Append>
               </InputGroup>
             </div>
-            <div className="input-box">
+            <div className="dates">
               <Form>
                 <Form.Row>
                   <Form.Group as={Col} controlId="dateFromPicker">
                     <Form.Label style={{ float: "left" }}>DATE FROM</Form.Label>
-                    <DatePicker selected={this.state.dateFrom} onChange={this.handleFromDate}/>
+                    <DatePicker className="dateFontSize" selected={this.state.dateFrom} onChange={this.handleFromDate} />
                   </Form.Group>
                   <Form.Group as={Col} controlId="dateToPicker">
                     <Form.Label style={{ float: "left" }}>DATE TO</Form.Label>
-                    <DatePicker style={{fontSize: "16px"}} selected={this.state.dateTo} onChange={this.handleToDate} minDate={this.state.dateFrom}/>
+                    <DatePicker className="dateFontSize" selected={this.state.dateTo} onChange={this.handleToDate} minDate={this.state.dateFrom} />
                   </Form.Group>
                 </Form.Row>
               </Form>
@@ -107,18 +109,25 @@ class Home extends React.Component {
                 <Form.Row>
                   <Form.Group as={Col} controlId="formGridField">
                     <Form.Label style={{ float: "left" }}>FIELD</Form.Label>
-                    <Form.Control as="select">
-                      <option>Option 1</option>
-                      <option>Option 2</option>
-                      <option>Option 3</option>
+                    <Form.Control as="select" defaultValue="Select...">
+                      <option>Select...</option>
+                      <option>Title</option>
+                      <option>Author</option>
+                      <option>Method</option>
+                      <option>Benefit</option>
                     </Form.Control>
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridOperator">
                     <Form.Label style={{ float: "left" }}>OPERATOR</Form.Label>
-                    <Form.Control as="select">
-                      <option>Option 1</option>
-                      <option>Option 2</option>
-                      <option>Option 3</option>
+                    <Form.Control as="select" defaultValue="Select...">
+                      <option>Select...</option>
+                      <option>Contains</option>
+                      <option>Does not contains</option>
+                      <option>Begins with</option>
+                      <option>Ends with</option>
+                      <option>Is equal to</option>
+                      <option>Is greather than</option>
+                      <option>Is less than</option>
                     </Form.Control>
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridValue">
@@ -136,7 +145,29 @@ class Home extends React.Component {
                   </Form.Group>
                 </Form.Row>
               </Form>
+              <div className="constraints">
+                <div className="mainPageHeadings">CONSTRAINTS</div>
+                <ListGroup>
+                  <InputGroup className="mb-3" style={{width:"100%"}}>
+                    <ListGroup.Item >Method is equal to test driven development.</ListGroup.Item>
+                    <InputGroup.Append>
+                      <IconButton aria-label="remove" style={{ float: "right", margin: "-5px 0 0 0" }}>
+                        <RemoveIcon />
+                      </IconButton>
+                    </InputGroup.Append>
+                  </InputGroup>
+                  <InputGroup className="mb-3" style={{width:"100%"}}>
+                    <ListGroup.Item >Benefit contains performance.</ListGroup.Item>
+                    <InputGroup.Append>
+                      <IconButton aria-label="remove" style={{ float: "right", margin: "-5px 0 0 0" }}>
+                        <RemoveIcon />
+                      </IconButton>
+                    </InputGroup.Append>
+                  </InputGroup>
+                </ListGroup>
+              </div>
             </div>
+
           </form>
         </div>
       </div>
