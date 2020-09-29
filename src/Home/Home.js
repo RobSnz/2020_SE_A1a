@@ -12,6 +12,7 @@ import DatePicker from "react-datepicker";
 import ListGroup from 'react-bootstrap/ListGroup';
 
 import "react-datepicker/dist/react-datepicker.css";
+import Article from "../Article/Article.js";
 
 class Home extends React.Component {
   constructor(props) {
