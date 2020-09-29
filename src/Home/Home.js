@@ -20,16 +20,21 @@ class Home extends React.Component {
     this.state = {
       search: '',
       dateFrom: new Date("01/01/1990"),
-      dateTo: new Date()
+      dateTo: new Date(),
+      selectField: 'Select...',
+      selectOperator: 'Select...',
+      selectValue: '',
+      constraints: []
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleSearch = this.handleSearch.bind(this);
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handleToDate = this.handleToDate.bind(this);
-    this.handleFieldChange = this.handleFieldChange.bind(this);
-    this.handleOperatorChange = this.handleOperatorChange.bind(this);
-    this.handleValue = this.handleValue.bind(this);
+    this.selectFieldHandler = this.selectFieldHandler.bind(this);
+    this.addConstraintHandler = this.addConstraintHandler.bind(this);
+    this.selectOperatorHandler = this.selectOperatorHandler.bind(this);
+    this.selectValueHandler = this.selectValueHandler.bind(this);
+    this.removeConstraintHandler = this.removeConstraintHandler.bind(this);
   }
 
   handleSubmit(event) {
@@ -39,15 +44,7 @@ class Home extends React.Component {
 
     console.log(search);
 
-    this.setState({ search: '' })
-  }
-
-  setStartDate = startDate => {
-    this.setState({ startDate });
-  }
-
-  handleSearch(event) {
-    this.setState({ search: event.target.value });
+    this.setState({ search: '' })   //reset all variables?
   }
 
   handleFromDate = dateFrom => {
@@ -55,19 +52,42 @@ class Home extends React.Component {
   };
 
   handleToDate = dateTo => {
-    this.setState({ dateTo })
+    this.setState({ dateTo });
   };
 
-  handleFieldChange(event) {
-    this.setState({ value: event.target.value })
+  selectFieldHandler(event) {
+    this.setState({ selectField: event.target.value });
+  };
+
+  selectOperatorHandler(event) {
+    this.setState({ selectOperator: event.target.value });
+  };
+
+  selectValueHandler(event){
+    this.setState({ selectValue: event.target.value});
   }
 
-  handleOperatorChange(event) {
-    this.setState({ value2: event.target.value })
+  addConstraintHandler(event) {
+    this.setState(state => {
+      const constraints = [...this.state.constraints, { field: this.state.selectField, operator: this.state.selectOperator, value: this.state.selectValue, id: Math.random() * 1000 }];
+
+      this.setState({ 
+        selectField: 'Select...',
+        selectOperator: 'Select...',
+        selectValue: '',
+        constraints: constraints, 
+      })
+    });
   }
 
-  handleValue(event) {
-    this.setState({ value3: event.target.value })
+  removeConstraintHandler = id =>{
+    this.setState(state => {
+      const constraints = this.state.constraints.filter(item => item.id !== id);
+
+      this.setState({
+        constraints: constraints
+      })
+    });
   }
 
   render() {
@@ -109,7 +129,7 @@ class Home extends React.Component {
                 <Form.Row>
                   <Form.Group as={Col} controlId="formGridField">
                     <Form.Label style={{ float: "left" }}>FIELD</Form.Label>
-                    <Form.Control as="select" defaultValue="Select...">
+                    <Form.Control as="select" value={this.state.selectField} onChange={this.selectFieldHandler}>
                       <option>Select...</option>
                       <option>Title</option>
                       <option>Author</option>
@@ -119,7 +139,7 @@ class Home extends React.Component {
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridOperator">
                     <Form.Label style={{ float: "left" }}>OPERATOR</Form.Label>
-                    <Form.Control as="select" defaultValue="Select...">
+                    <Form.Control as="select" value={this.state.selectOperator} onChange={this.selectOperatorHandler}>
                       <option>Select...</option>
                       <option>Contains</option>
                       <option>Does not contains</option>
@@ -134,10 +154,12 @@ class Home extends React.Component {
                     <Form.Label style={{ float: "left" }}>VALUE</Form.Label>
                     <InputGroup className="mb-3">
                       <FormControl
+                        value = {this.state.selectValue}
+                        onChange = {this.selectValueHandler}
                         aria-describedby="basic-addon2"
                       />
                       <InputGroup.Append>
-                        <IconButton aria-label="add" style={{ float: "right", margin: "-5px 0 0 0" }}>
+                        <IconButton onClick={this.addConstraintHandler} aria-label="add" style={{ float: "right", margin: "-5px 0 0 0" }}>
                           <AddIcon />
                         </IconButton>
                       </InputGroup.Append>
@@ -148,7 +170,17 @@ class Home extends React.Component {
               <div className="constraints">
                 <div className="mainPageHeadings">CONSTRAINTS</div>
                 <ListGroup>
-                  <InputGroup className="mb-3" style={{width:"100%"}}>
+                  {this.state.constraints.map(item => (
+                    <InputGroup className="mb-3" style={{ width: "100%" }}>
+                      <ListGroup.Item>{item.field} {item.operator} {item.value}</ListGroup.Item>
+                      <InputGroup.Append>
+                        <IconButton onClick={() => this.removeConstraintHandler(item.id)} aria-label="remove" style={{ float: "right", margin: "-5px 0 0 0" }}>
+                          <RemoveIcon />
+                        </IconButton>
+                      </InputGroup.Append>
+                    </InputGroup>
+                  ))}
+                  {/*<InputGroup className="mb-3" style={{width:"100%"}}>
                     <ListGroup.Item >Method is equal to test driven development.</ListGroup.Item>
                     <InputGroup.Append>
                       <IconButton aria-label="remove" style={{ float: "right", margin: "-5px 0 0 0" }}>
@@ -163,7 +195,7 @@ class Home extends React.Component {
                         <RemoveIcon />
                       </IconButton>
                     </InputGroup.Append>
-                  </InputGroup>
+                  </InputGroup>*/}
                 </ListGroup>
               </div>
             </div>
