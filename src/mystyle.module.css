@@ -89,3 +89,28 @@
 .iconStyle{
     vertical-align: middle;
 }
+
+.submitBox{
+    display: flex;
+    justify-content: center;
+    padding: 30;
+    border: 2px;
+    border-radius: 10px;
+    height: 511px;
+    width: 400px;
+    background-color: #30a2b1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+}
+
+.articleBoxes{
+    display: flex;
+    justify-content: center;
+    width: 150%;
+    margin-left: -25%;
+    justify-content: center;
+    top: 10px;
+    height: 40px;
+}
