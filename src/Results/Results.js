@@ -41,8 +41,7 @@ handleSubmit(event) {                                               //once user 
 
 render() {
   return (
-    
-    <div className="Home">
+    <div>
       <Navbar bg="light" variant="light">
             <Form>
                 <Form.Row className="align-items-center">
@@ -72,16 +71,18 @@ render() {
                 </Form.Row>
             </Form>
         </Navbar>
-      <div className="lander">
+      <div>
         <form onSubmit={this.handleSubmit}>
-          <div className="input-box">
+          <div>
             <Card>
               <Card.Body>
-                <Card.Title>Special title treatment</Card.Title>
+                <Card.Title>Scrum: The Art of Doing Twice the Work in Half the Time</Card.Title>
                 <Card.Text>
-                  With supporting text below as a natural lead-in to additional content.
+                  Author: Jeff Sutherland<br/>
+                  Year: September 30, 2014<br />
+                  DOI: 15678904
                 </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
+                <Button variant="primary">Details</Button>
               </Card.Body>
             </Card>
           </div>
