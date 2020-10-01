@@ -10,15 +10,14 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import DatePicker from "react-datepicker";
 import ListGroup from 'react-bootstrap/ListGroup';
-
+import HomeFunctions from './HomeFunctions.js'
 import "react-datepicker/dist/react-datepicker.css";
-import Article from "../Article/Article.js";
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
+    this.state = {                          //keeps track of state of users current search
       search: '',
       dateFrom: new Date("01/01/1990"),
       dateTo: new Date(),
@@ -28,7 +27,7 @@ class Home extends React.Component {
       constraints: []
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);                           //binders to handle data changes and present them
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handleToDate = this.handleToDate.bind(this);
     this.selectFieldHandler = this.selectFieldHandler.bind(this);
@@ -38,7 +37,7 @@ class Home extends React.Component {
     this.removeConstraintHandler = this.removeConstraintHandler.bind(this);
   }
 
-  handleSubmit(event) {
+  handleSubmit(event) {                                               //once user clicks on search
     event.preventDefault();
 
     const { search } = this.state;
@@ -57,36 +56,47 @@ class Home extends React.Component {
   };
 
   selectFieldHandler(event) {
-    this.setState({ selectField: event.target.value });
+    this.setState({ selectField: event.target.value });         //updates field value
   };
 
   selectOperatorHandler(event) {
-    this.setState({ selectOperator: event.target.value });
+    this.setState({ selectOperator: event.target.value });      //updates operator value
   };
 
-  selectValueHandler(event){
-    this.setState({ selectValue: event.target.value});
+  selectValueHandler(event) {
+    this.setState({ selectValue: event.target.value });         //updates value
   }
 
-  addConstraintHandler(event) {
-    this.setState(state => {
-      const constraints = [...this.state.constraints, { field: this.state.selectField, operator: this.state.selectOperator, value: this.state.selectValue, id: Math.random() * 1000 }];
+  addConstraintHandler() {                               //handles add constraint event
+    this.setState(() => {
+      const item = {                                //creates constraint item based off users selections
+        field: this.state.selectField,
+        operator: this.state.selectOperator,
+        value: this.state.selectValue,
+        id: Math.random() * 1000                  //random ID - NEED TO CHANGE THIS STILL
+      }
 
-      this.setState({ 
-        selectField: 'Select...',
-        selectOperator: 'Select...',
-        selectValue: '',
-        constraints: constraints, 
-      })
+      const constraints = HomeFunctions.addConstraint(this.state.constraints, item);      //attempts to add constraint to users constraint list
+
+      if (constraints !== null) {                 //update UI
+        this.setState({
+          selectField: 'Select...',
+          selectOperator: 'Select...',
+          selectValue: '',
+          constraints: constraints,
+        })
+      } else{
+        //notify user - STILL NEED TO DO THIS
+      }
     });
   }
 
-  removeConstraintHandler = id =>{
-    this.setState(state => {
-      const constraints = this.state.constraints.filter(item => item.id !== id);
+  removeConstraintHandler = id => { 
+    this.setState(() => {
+      const constraints = HomeFunctions.removeConstraint(this.state.constraints, id);   //uses ID to remove constraint from list
 
       this.setState({
-        constraints: constraints
+        constraints: constraints        //updates list of constraints
       })
     });
   }
@@ -155,8 +165,8 @@ class Home extends React.Component {
                     <Form.Label style={{ float: "left" }}>VALUE</Form.Label>
                     <InputGroup className="mb-3">
                       <FormControl
-                        value = {this.state.selectValue}
-                        onChange = {this.selectValueHandler}
+                        value={this.state.selectValue}
+                        onChange={this.selectValueHandler}
                         aria-describedby="basic-addon2"
                       />
                       <InputGroup.Append>
@@ -181,22 +191,6 @@ class Home extends React.Component {
                       </InputGroup.Append>
                     </InputGroup>
                   ))}
-                  {/*<InputGroup className="mb-3" style={{width:"100%"}}>
-                    <ListGroup.Item >Method is equal to test driven development.</ListGroup.Item>
-                    <InputGroup.Append>
-                      <IconButton aria-label="remove" style={{ float: "right", margin: "-5px 0 0 0" }}>
-                        <RemoveIcon />
-                      </IconButton>
-                    </InputGroup.Append>
-                  </InputGroup>
-                  <InputGroup className="mb-3" style={{width:"100%"}}>
-                    <ListGroup.Item >Benefit contains performance.</ListGroup.Item>
-                    <InputGroup.Append>
-                      <IconButton aria-label="remove" style={{ float: "right", margin: "-5px 0 0 0" }}>
-                        <RemoveIcon />
-                      </IconButton>
-                    </InputGroup.Append>
-                  </InputGroup>*/}
                 </ListGroup>
               </div>
             </div>

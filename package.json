@@ -33,7 +33,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "cucumber-js",
+    "test": "mocha",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
