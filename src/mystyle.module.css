@@ -96,21 +96,30 @@
     padding: 30;
     border: 2px;
     border-radius: 10px;
-    height: 511px;
+    height: 430px;
     width: 400px;
-    background-color: #30a2b1;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     position: fixed;
+    /*background-color: blueviolet;*/
 }
 
 .articleBoxes{
-    display: flex;
-    justify-content: center;
-    width: 150%;
-    margin-left: -25%;
     justify-content: center;
     top: 10px;
     height: 40px;
+    border: 1px solid grey;
+    border-radius: 2px;
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.submitButton {
+    text-align: center;
+    height: 50px;
+    position: fixed;
+    border: 1px solid grey;
+    border-radius: 10px;
+    width: 320px;
 }

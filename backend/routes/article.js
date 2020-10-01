@@ -24,7 +24,7 @@ router.route('/add').post((req, res) => {
     const newArticle = new Article({title, year, author, month, volume, pagesNum, numOfPages, ePrint, ePrintType, ePrintClass, annote});  
 
     newArticle.save()
-    .then(() => res.json('article added!'))
+    .then(() => res.json('Article has successfully been sent for review!'))
     .catch(err => res.status(400).json('err: ' + err));
 });
 
