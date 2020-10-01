@@ -8,7 +8,7 @@ class Login extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state={ email: '', password: '', cPassword: '', fName: '', lName: '', isLogin: true};
+        this.state={ email: "", password: "", cPassword: "", fName: "", lName: "", isLogin: true};
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFName = this.handleFName.bind(this);
         this.handleLName = this.handleLName.bind(this);
@@ -18,11 +18,6 @@ class Login extends React.Component {
         this.handleSwapPages= this.handleSwapPages.bind(this);
     }
 
-    toggleChild = () => {
-        console.log("toggleChild");
-        this.mainBox.current.classList.toggle("hidden");
-    };
-
     handleSubmit(event) {
         event.preventDefault();
 
@@ -31,7 +26,7 @@ class Login extends React.Component {
 
         console.log(email + " | " + password);
 
-        this.setState({ email: "", password: ""})
+        this.setState({ email: "", password: "", cPassword: "", fName: "", lName: ""})
     }
 
     handleEmail(event) {
@@ -72,7 +67,7 @@ class Login extends React.Component {
                                     <ul>
                                         <BsFillPersonFill size="40px" style={{ verticalAlign: 'center' }}/>
                                         <input onKeyDown={ (e) => { if(e.keyCode === 13) this.handleSubmit(e);}}
-                                            type='text' placeholder='Email address' onChange={(event) => this.setState({email: event.target.value})}
+                                            type='email' placeholder='Email address' onChange={ this.handleEmail}
                                             value={ this.state.email } className={ styles.inputStyle }
                                         />
                                     </ul>
@@ -81,7 +76,7 @@ class Login extends React.Component {
                                     <ul>
                                         <BsFillLockFill size="40px" style={{ verticalAlign: 'center' }}/>
                                         <input onKeyDown={ (e) => { if(e.keyCode === 13) this.handleSubmit(e);}}
-                                            type='text' placeholder='Password' onChange={(event) => this.setState({password: event.target.value})}
+                                            type='password' placeholder='Password' onChange={ this.handlePassword }
                                             value={ this.state.password } className={ styles.inputStyle }
                                         />
                                     </ul>
@@ -126,7 +121,7 @@ class Login extends React.Component {
                                     <ul>
                                         <BsFillPersonFill size="40px" style={{ verticalAlign: 'center' }}/>
                                         <input onKeyDown={ (e) => { if(e.keyCode === 13) this.handleSubmit(e);}}
-                                            type='text' placeholder='Email address' onChange={ this.handleEmail }
+                                            type='email' placeholder='Email address' onChange={ this.handleEmail }
                                             value={ this.state.email } className={ styles.inputStyle }
                                         />
                                     </ul>
@@ -135,7 +130,7 @@ class Login extends React.Component {
                                     <ul>
                                         <BsFillLockFill size="40px" style={{ verticalAlign: 'center' }}/>
                                         <input onKeyDown={ (e) => { if(e.keyCode === 13) this.handleSubmit(e);}}
-                                            type='text' placeholder='Password' onChange={ this.handlePassword }
+                                            type='password' placeholder='Password' onChange={ this.handlePassword }
                                             value={ this.state.password } className={ styles.inputStyle }
                                         />
                                     </ul>
@@ -144,7 +139,7 @@ class Login extends React.Component {
                                     <ul>
                                         <BsFillLockFill size="40px" style={{ verticalAlign: 'center' }}/>
                                         <input onKeyDown={ (e) => { if(e.keyCode === 13) this.handleSubmit(e);}}
-                                            type='text' placeholder='Confirm Password' onChange={ this.handleCPassword }
+                                            type='password' placeholder='Confirm Password' onChange={ this.handleCPassword }
                                             value={ this.state.cPassword } className={ styles.inputStyle }
                                         />
                                     </ul>
