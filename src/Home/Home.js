@@ -37,6 +37,10 @@ class Home extends React.Component {
     this.removeConstraintHandler = this.removeConstraintHandler.bind(this);
   }
 
+  handleSearch = () => {
+    this.props.history.push('/Results');
+  }
+
   handleSubmit(event) {                                               //once user clicks on search
     event.preventDefault();
 
@@ -116,7 +120,7 @@ class Home extends React.Component {
                 />
                 <InputGroup.Append>
                   <IconButton aria-label="search" style={{ float: "right", margin: "-5px 0 0 0" }}>
-                    <SearchIcon />
+                    <SearchIcon onClick={this.handleSearch}/>
                   </IconButton>
                 </InputGroup.Append>
               </InputGroup>
