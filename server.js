@@ -12,7 +12,7 @@ const PORT = normalizePort(process.env.PORT || 5000);
 const app = express();
 const dev = app.get('env') !== 'production';
 
-if(dev) {
+if(!dev) {
   app.disable('x-powered-by');
   app.use(compression());
   app.use(morgan('common'));
@@ -27,9 +27,11 @@ if(dev) {
 }
 const server = createServer(app);
 
-const uri = "mongodb+srv://Rob:123software@cluster0.0pi87.mongodb.net/test?retryWrites=true&w=majority";
-  mongoose.connect(uri, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
-);
+//const uri = "mongodb+srv://Rob:123software@cluster0.0pi87.mongodb.net/test?retryWrites=true&w=majority";
+  mongoose.connect(process.env.MONGODB_URI, { 
+    useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true 
+  });
+//);
 
 const connection = mongoose.connection;
 
