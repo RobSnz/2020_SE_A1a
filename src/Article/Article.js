@@ -63,20 +63,6 @@ class Article extends React.Component {
                                 <div>
                                     <ul>
                                         <input onKeyDown={ (e) => { if(e.key === 13) this.handleSubmit(e);}}
-                                            type='text' placeholder='Year' onChange={(e) => this.setState({ year: e.target.value })}
-                                            value={ this.state.year } 
-                                            style={{ width: "100px", marginRight: "10px"}} className={ styles.articleBoxes }
-                                        />
-                                        <input onKeyDown={ (e) => { if(e.key === 13) this.handleSubmit(e);}}
-                                            type='text' placeholder='Month' onChange={(e) => this.setState({ month: e.target.value })}
-                                            value={ this.state.month } 
-                                            style={{ width: "100px"}} className={ styles.articleBoxes }
-                                        />
-                                    </ul>
-                                </div>
-                                <div>
-                                    <ul>
-                                        <input onKeyDown={ (e) => { if(e.key === 13) this.handleSubmit(e);}}
                                             type='text' placeholder='Volume' onChange={(e) => this.setState({ volume: e.target.value })}
                                             value={ this.state.volume } 
                                             style={{ width: "100px", marginRight: "10px"}} className={ styles.articleBoxes }
@@ -90,6 +76,20 @@ class Article extends React.Component {
                                             type='text' placeholder='No. of pages' onChange={(e) => this.setState({ numOfPages: e.target.value })}
                                             value={ this.state.numOfPages } 
                                             style={{ width: "100px"}} className={ styles.articleBoxes }
+                                        />
+                                    </ul>
+                                </div>
+                                <div>
+                                    <ul>
+                                        <input onKeyDown={ (e) => { if(e.key === 13) this.handleSubmit(e);}}
+                                            type='text' placeholder='Year' onChange={(e) => this.setState({ year: e.target.value })}
+                                            value={ this.state.year } 
+                                            style={{ width: "155px", marginRight: "10px"}} className={ styles.articleBoxes }
+                                        />
+                                        <input onKeyDown={ (e) => { if(e.key === 13) this.handleSubmit(e);}}
+                                            type='text' placeholder='Month' onChange={(e) => this.setState({ month: e.target.value })}
+                                            value={ this.state.month } 
+                                            style={{ width: "155px"}} className={ styles.articleBoxes }
                                         />
                                     </ul>
                                 </div>
