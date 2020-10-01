@@ -2,6 +2,7 @@ import React from "react";
 import "./Results.css";
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import Navigation from '../components/Navbar';
 
 class Results extends React.Component {
   constructor(props) {
@@ -18,13 +19,13 @@ handleSubmit(event) {                                               //once user 
 
 render() {
   return (
+    
     <div className="Home">
+      <div><Navigation /></div>
       <div className="lander">
         <form onSubmit={this.handleSubmit}>
           <div className="input-box">
-            <h1 style={{ float: "left" }}>SEARCH ARTICLES</h1>
             <Card>
-              <Card.Header>Featured</Card.Header>
               <Card.Body>
                 <Card.Title>Special title treatment</Card.Title>
                 <Card.Text>
