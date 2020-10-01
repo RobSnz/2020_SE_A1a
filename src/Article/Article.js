@@ -7,7 +7,8 @@ class Article extends React.Component {
     constructor(props) {
         super(props);
         
-        this.state = {title: '', year: '', author: '', month: '', volume: '', pagesNum: '', numOfPages: '', ePrint: '', ePrintType: '', ePrintClass: '', annote: ''};
+        this.state = {title: '', year: '', author: '', month: '', volume: '', pagesNum: '', numOfPages: '', 
+        ePrint: '', ePrintType: '', ePrintClass: '', annote: ''};
 
         this.handleSubmit = this.handleSubmit.bind(this);
     }
@@ -28,7 +29,6 @@ class Article extends React.Component {
             ePrintClass: this.state.ePrintClass,
             annote: this.state.annote
         }
-
         storeArticle(articleSave);
     }
 
