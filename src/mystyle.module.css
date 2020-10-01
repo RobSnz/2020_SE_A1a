@@ -2,11 +2,11 @@
     display: flex;
     justify-content: center;
     padding: 30;
-    border: 2px;
-    border-radius: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
     height: 400px;
     width: 400px;
-    background-color: #30a2b1;
+    /*background-color: #30a2b1;*/
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -17,11 +17,11 @@
     display: flex;
     justify-content: center;
     padding: 30;
-    border: 2px;
-    border-radius: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
     height: 650px;
     width: 400px;
-    background-color: #30a2b1;
+    /*8background-color: #30a2b1;*/
     top: 55%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -29,7 +29,7 @@
 }
 
 .secondaryBox {
-    background-color: #30a2b1;
+    /*background-color: #30a2b1;*/
     border: none;
 }
 
@@ -94,9 +94,9 @@
     display: flex;
     justify-content: center;
     padding: 30;
-    border: 2px;
-    border-radius: 10px;
-    height: 430px;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 455px;
     width: 400px;
     top: 40%;
     left: 50%;

@@ -26,7 +26,7 @@ class Login extends React.Component {
 
         console.log(email + " | " + password);
 
-        this.setState({ email: "", password: "", cPassword: "", fName: "", lName: ""})
+        this.setState({ email: "", password: "", cPassword: "", fName: "", lName: ""});
     }
 
     handleEmail(event) {
@@ -52,6 +52,7 @@ class Login extends React.Component {
     handleSwapPages(event) {
         event.preventDefault();
 
+        this.setState({ email: "", password: "", cPassword: "", fName: "", lName: ""});
         this.setState({ isLogin: !this.state.isLogin });
     }
 
@@ -60,7 +61,7 @@ class Login extends React.Component {
             return (
                 <div className={ styles.mainBox }>
                     <div>
-                        <h2 style={{ paddingBottom: "10px", marginTop: "10%" }}>Log in to your account</h2>
+                        <h2 style={{ paddingBottom: "10px", marginTop: "10%" }}>Login to your account</h2>
                         <Card style={{ width: "100%", border: "none" }}>
                             <form onSubmit={ this.handleSubmit } className={ styles.secondaryBox }>
                                 <div>
@@ -86,7 +87,7 @@ class Login extends React.Component {
                         </Card>
                         <div>
                             <form onSubmit={ this.handleSwapPages }>
-                                <input type="submit" value="Not a member? Register" style={{ marginTop: "100px"}}/>
+                                <input type="submit" value="Not a member? Register" style={{ marginTop: "100px", width: "100%" }}/>
                             </form>
                         </div>
                     </div>
@@ -96,7 +97,7 @@ class Login extends React.Component {
             return (
                 <div className={ styles.registerBox }>
                     <div>
-                        <h2 style={{ paddingBottom: "10px", marginTop: "10%" }}>Log in to your account</h2>
+                        <h2 style={{ paddingBottom: "10px", marginTop: "10%" }}>Register your account</h2>
                         <Card style={{ width: "100%", border: "none" }}>
                             <form onSubmit={ this.handleSubmit } className={ styles.secondaryBox }>
                                 <div>
@@ -149,7 +150,7 @@ class Login extends React.Component {
                         </Card>
                         <div>
                             <form onSubmit={ this.handleSwapPages }>
-                                <input type="submit" value="Already a member? Login" style={{ marginTop: "100px"}}/>
+                                <input type="submit" value="Already a member? Login" style={{ marginTop: "100px", width: "100%" }}/>
                             </form>
                         </div>
                     </div>
