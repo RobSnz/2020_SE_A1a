@@ -98,6 +98,7 @@ class Results extends React.Component {
                         <Card.Title>Title: {article.title}</Card.Title>
                         <Card.Text>
                           Author: {article.author}<br/>
+                          Year: {article.year}<br/>
                         </Card.Text>
                         <Button variant="primary">Details</Button>
                       </Card.Body>
