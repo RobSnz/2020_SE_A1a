@@ -5,18 +5,16 @@ import { withRouter } from 'react-router-dom';
 
 const Navigation = (props) => {
     return (
-        <Navbar bg="light" variant="light">
-            <Navbar.Brand href="/">SEER</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="ml-auto" fontSize="100px !important">
-                    {/*<Nav.Link href="/"></Nav.Link>*/}
-                    {/*<Nav.Link href="/About">About</Nav.Link>*/}
-                    {/*<Nav.Link href="/Contact">Contact</Nav.Link>*/}
-                    <Nav.Link href="/Submit">Submit</Nav.Link>
-                    <Nav.Link href="/Login">Login</Nav.Link>
-                </Nav>
-            </Navbar.Collapse>
+        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+        <Navbar.Brand href="/">SEER</Navbar.Brand>
+        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="mr-auto"></Nav>
+            <Nav>
+                <Nav.Link href="/login">Login</Nav.Link>
+                <Nav.Link href="/submit">Submit</Nav.Link>
+            </Nav>
+        </Navbar.Collapse>
         </Navbar>
     )
 }
