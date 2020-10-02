@@ -59,30 +59,32 @@ class Login extends React.Component {
     render() {
         if(this.state.isLogin) {
             return (
-                <div className={ styles.mainBox }>
+                <div className={ styles.loginBox }>
                     <div>
-                        <h2 style={{ paddingBottom: "10px", marginTop: "10%" }}>Login to your account</h2>
+                        <h1 style={{ marginTop: "10%", textAlign: "center" }}>LOGIN</h1>
                         <Card style={{ width: "100%", border: "none" }}>
                             <form onSubmit={ this.handleSubmit } className={ styles.secondaryBox }>
                                 <div>
                                     <ul>
-                                        <BsFillPersonFill size="40px" style={{ verticalAlign: 'center' }}/>
+                                        {/* <BsFillPersonFill size="40px" style={{ verticalAlign: 'center' }}/> */}
                                         <input onKeyDown={ (e) => { if(e.keyCode === 13) this.handleSubmit(e);}}
                                             type='email' placeholder='Email address' onChange={ this.handleEmail}
-                                            value={ this.state.email } className={ styles.inputStyle }
+                                            value={ this.state.email } required='required'
+                                            style={{ width: "320px"}} className={ styles.articleBoxes}
                                         />
                                     </ul>
                                 </div>
                                 <div>
                                     <ul>
-                                        <BsFillLockFill size="40px" style={{ verticalAlign: 'center' }}/>
+                                        {/* <BsFillLockFill size="40px" style={{ verticalAlign: 'center' }}/> */}
                                         <input onKeyDown={ (e) => { if(e.keyCode === 13) this.handleSubmit(e);}}
                                             type='password' placeholder='Password' onChange={ this.handlePassword }
-                                            value={ this.state.password } className={ styles.inputStyle }
+                                            value={ this.state.password } required='required'
+                                            style={{ width: "320px"}} className={ styles.articleBoxes}
                                         />
                                     </ul>
                                 </div>
-                                <input type="submit" value="Log in" className={ styles.signupButton }/>
+                                <input type="submit" value="Login" className={ styles.loginButton }/>
                             </form>
                         </Card>
                         <div>
@@ -95,57 +97,62 @@ class Login extends React.Component {
             );
         } else {
             return (
-                <div className={ styles.registerBox }>
+                <div className={ styles.signupBox }>
                     <div>
-                        <h2 style={{ paddingBottom: "10px", marginTop: "10%" }}>Register your account</h2>
+                        <h1 style={{ marginTop: "10%", textAlign: "center" }}>SIGN UP</h1>
                         <Card style={{ width: "100%", border: "none" }}>
                             <form onSubmit={ this.handleSubmit } className={ styles.secondaryBox }>
                                 <div>
                                     <ul>
-                                        <BsFillPersonFill size="40px" style={{ verticalAlign: 'center' }}/>
+                                        {/* <BsFillPersonFill size="40px" style={{ verticalAlign: 'center' }}/> */}
                                         <input onKeyDown={ (e) => { if(e.keyCode === 13) this.handleSubmit(e);}}
                                             type='text' placeholder='First Name' onChange={ this.handleFName }
-                                            value={ this.state.fName } className={ styles.inputStyle }
+                                            value={ this.state.fName } required='required'
+                                            style={{ width: "320px"}} className={ styles.articleBoxes}
                                         />
                                     </ul>
                                 </div>
                                 <div>
                                     <ul>
-                                        <BsFillPersonFill size="40px" style={{ verticalAlign: 'center' }}/>
+                                        {/* <BsFillPersonFill size="40px" style={{ verticalAlign: 'center' }}/> */}
                                         <input onKeyDown={ (e) => { if(e.keyCode === 13) this.handleSubmit(e);}}
                                             type='text' placeholder='Last Name' onChange={ this.handleLName }
-                                            value={ this.state.lName } className={ styles.inputStyle }
+                                            value={ this.state.lname } required='required'
+                                            style={{ width: "320px"}} className={ styles.articleBoxes}
                                         />
                                     </ul>
                                 </div>
                                 <div>
                                     <ul>
-                                        <BsFillPersonFill size="40px" style={{ verticalAlign: 'center' }}/>
+                                        {/* <BsFillPersonFill size="40px" style={{ verticalAlign: 'center' }}/> */}
                                         <input onKeyDown={ (e) => { if(e.keyCode === 13) this.handleSubmit(e);}}
                                             type='email' placeholder='Email address' onChange={ this.handleEmail }
-                                            value={ this.state.email } className={ styles.inputStyle }
+                                            value={ this.state.email } required='required'
+                                            style={{ width: "320px"}} className={ styles.articleBoxes}
                                         />
                                     </ul>
                                 </div>
                                 <div>
                                     <ul>
-                                        <BsFillLockFill size="40px" style={{ verticalAlign: 'center' }}/>
+                                        {/* <BsFillLockFill size="40px" style={{ verticalAlign: 'center' }}/> */}
                                         <input onKeyDown={ (e) => { if(e.keyCode === 13) this.handleSubmit(e);}}
                                             type='password' placeholder='Password' onChange={ this.handlePassword }
-                                            value={ this.state.password } className={ styles.inputStyle }
+                                            value={ this.state.password } required='required'
+                                            style={{ width: "320px"}} className={ styles.articleBoxes}
                                         />
                                     </ul>
                                 </div>
                                 <div>
                                     <ul>
-                                        <BsFillLockFill size="40px" style={{ verticalAlign: 'center' }}/>
+                                        {/* <BsFillLockFill size="40px" style={{ verticalAlign: 'center' }}/> */}
                                         <input onKeyDown={ (e) => { if(e.keyCode === 13) this.handleSubmit(e);}}
                                             type='password' placeholder='Confirm Password' onChange={ this.handleCPassword }
-                                            value={ this.state.cPassword } className={ styles.inputStyle }
+                                            value={ this.state.cpassword } required='required'
+                                            style={{ width: "320px"}} className={ styles.articleBoxes}
                                         />
                                     </ul>
                                 </div>
-                                <input type="submit" value="Register" className={ styles.registerConfirm }/>
+                                <input type="submit" value="Register" className={ styles.loginButton }/>
                             </form>
                         </Card>
                         <div>

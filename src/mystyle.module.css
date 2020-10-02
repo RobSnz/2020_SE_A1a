@@ -13,6 +13,7 @@
     position: fixed;
 }
 
+
 .registerBox {
     display: flex;
     justify-content: center;
@@ -28,10 +29,10 @@
     position: fixed;
 }
 
-.secondaryBox {
-    /*background-color: #30a2b1;*/
+/* .secondaryBox {
+    background-color: #30a2b1;
     border: none;
-}
+} */
 
 .inputStyle {
     width: 80%;
@@ -48,24 +49,20 @@
     text-align: center;
     width: 82%;
     height: 50px;
-    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     position: fixed;
     border-radius: 10px;
-    margin-top: 25%;
+    margin-top: 10%;
 }
 
 .signupButton {
-  text-align: center;
-  width: 82%;
-  height: 50px;
-  top: 65%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  position: fixed;
-  border-radius: 10px;
-  margin-top: 10%;
+    text-align: center;
+    height: 50px;
+    position: fixed;
+    border: 1px solid grey;
+    border-radius: 10px;
+    width: 320px;
 }
 
 .signUpText {
@@ -93,16 +90,60 @@
 .submitBox{
     display: flex;
     justify-content: center;
-    padding: 30;
+    padding: 1%;
     border: 1px solid black;
     border-radius: 5px;
-    height: 455px;
+    height: 500px;
     width: 400px;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     position: fixed;
     /*background-color: blueviolet;*/
+}
+
+.signupBox{
+    display: flex;
+    justify-content: center;
+    padding-top: 0%;
+    padding-bottom: 0%;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 510px;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    /*background-color: blueviolet;*/
+}
+
+.loginBox{
+    display: flex;
+    justify-content: center;
+    padding: 0%;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 350px;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
+}
+
+.signup{
+    display: flex;
+    justify-content: center;
+    padding: 0%;
+    border: 1px solid black;
+    border-radius: 5px;
+    height: 350px;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    position: fixed;
 }
 
 .articleBoxes{
