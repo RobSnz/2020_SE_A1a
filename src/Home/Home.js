@@ -189,7 +189,7 @@ class Home extends React.Component {
                   <div className="mainPageHeadings">CONSTRAINTS</div>
                   <ListGroup>
                     {this.state.constraints.map(item => (
-                      <InputGroup className="mb-3" style={{ width: "100%" }}>
+                      <InputGroup className="mb-3" style={{ width: "100%", alignItems: "center" }}>
                         <ListGroup.Item>{item.field} {item.operator} {item.value}</ListGroup.Item>
                         <InputGroup.Append>
                           <IconButton onClick={() => this.removeConstraintHandler(item.id)} aria-label="remove" style={{ float: "right", margin: "-5px 0 0 0" }}>
