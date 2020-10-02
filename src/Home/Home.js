@@ -10,7 +10,7 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import DatePicker from "react-datepicker";
 import ListGroup from 'react-bootstrap/ListGroup';
-import HomeFunctions from './HomeFunctions.js'
+//import HomeFunctions from './HomeFunctions.js'
 import "react-datepicker/dist/react-datepicker.css";
 
 class Home extends React.Component {
@@ -76,7 +76,8 @@ class Home extends React.Component {
         id: Math.random() * 1000                  //random ID - NEED TO CHANGE THIS STILL
       }
 
-      const constraints = HomeFunctions.addConstraint(this.state.constraints, item);      //attempts to add constraint to users constraint list
+      //const constraints = HomeFunctions.addConstraint(this.state.constraints, item);      //attempts to add constraint to users constraint list
+      const constraints = [...constraints, { field: item.field, operator: item.operator, value: item.value, id: item.id }];
 
       if (constraints !== null) {                 //update UI
         this.setState({
@@ -93,7 +94,8 @@ class Home extends React.Component {
 
   removeConstraintHandler = id => { 
     this.setState(() => {
-      const constraints = HomeFunctions.removeConstraint(this.state.constraints, id);   //uses ID to remove constraint from list
+      //const constraints = HomeFunctions.removeConstraint(this.state.constraints, id);   //uses ID to remove constraint from list
+      const constraints = this.state.constraints.filter(item => item.id !== id);
 
       this.setState({
         constraints: constraints        //updates list of constraints
