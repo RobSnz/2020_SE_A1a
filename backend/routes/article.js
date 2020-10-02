@@ -1,9 +1,11 @@
 const router = require('express').Router();
 let Article = require('../models/article.model');
 
-router.route('/').get((req, res) => {
-    Article.find()
-        .then(article => res.json(article))
+router.route('/').post((req, res) => {
+    Article.find({})
+        .then((data) => {
+            res.json(data);
+        })
         .catch(err => res.status(400).json('Error: ' + err));
 });
 

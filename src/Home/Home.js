@@ -12,6 +12,7 @@ import DatePicker from "react-datepicker";
 import ListGroup from 'react-bootstrap/ListGroup';
 //import HomeFunctions from './HomeFunctions.js'
 import "react-datepicker/dist/react-datepicker.css";
+//const HomeFunctions = require('./HomeFunctions');
 
 class Home extends React.Component {
   constructor(props) {
@@ -35,6 +36,10 @@ class Home extends React.Component {
     this.selectOperatorHandler = this.selectOperatorHandler.bind(this);
     this.selectValueHandler = this.selectValueHandler.bind(this);
     this.removeConstraintHandler = this.removeConstraintHandler.bind(this);
+  }
+
+  handleSearch = () => {
+    this.props.history.push('/Results');
   }
 
   handleSubmit(event) {                                               //once user clicks on search
@@ -76,8 +81,8 @@ class Home extends React.Component {
         id: Math.random() * 1000                  //random ID - NEED TO CHANGE THIS STILL
       }
 
-      //const constraints = HomeFunctions.addConstraint(this.state.constraints, item);      //attempts to add constraint to users constraint list
-      const constraints = [...constraints, { field: item.field, operator: item.operator, value: item.value, id: item.id }];
+      //const constraints = HomeFunctions.addConstraint(this.state.constraints, item);      //attempts to add constraint to users constraint list'
+      const constraints = [...this.state.constraints, { field: item.field, operator: item.operator, value: item.value, id: item.id }];        //appends on to current constraint array
 
       if (constraints !== null) {                 //update UI
         this.setState({
@@ -95,7 +100,7 @@ class Home extends React.Component {
   removeConstraintHandler = id => { 
     this.setState(() => {
       //const constraints = HomeFunctions.removeConstraint(this.state.constraints, id);   //uses ID to remove constraint from list
-      const constraints = this.state.constraints.filter(item => item.id !== id);
+      const constraints = this.state.constraints.filter(item => item.id !== id); 
 
       this.setState({
         constraints: constraints        //updates list of constraints
@@ -118,7 +123,7 @@ class Home extends React.Component {
                   />
                   <InputGroup.Append>
                     <IconButton aria-label="search" style={{ float: "right", margin: "-5px 0 0 0" }}>
-                      <SearchIcon />
+                      <SearchIcon onClick={this.handleSearch}/>
                     </IconButton>
                   </InputGroup.Append>
                 </InputGroup>
@@ -184,7 +189,7 @@ class Home extends React.Component {
                   <div className="mainPageHeadings">CONSTRAINTS</div>
                   <ListGroup>
                     {this.state.constraints.map(item => (
-                      <InputGroup className="mb-3" style={{ width: "100%" }}>
+                      <InputGroup className="mb-3" style={{ width: "100%", alignItems: "center" }}>
                         <ListGroup.Item>{item.field} {item.operator} {item.value}</ListGroup.Item>
                         <InputGroup.Append>
                           <IconButton onClick={() => this.removeConstraintHandler(item.id)} aria-label="remove" style={{ float: "right", margin: "-5px 0 0 0" }}>

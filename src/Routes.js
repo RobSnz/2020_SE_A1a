@@ -7,6 +7,7 @@ import Login from "./Login/Login";
 import Home from "./Home/Home";
 import history from './history';
 import Submit from "./Submit/Submit";
+import Results from "./Results/Results";
 
 export default class Routes extends Component {
     render() {
@@ -18,6 +19,7 @@ export default class Routes extends Component {
                     <Route path="/Contact" component={Contact} />
                     <Route path="/Submit" component={Submit} />
                     <Route path="/Login" component={Login} />
+                    <Route path="/Results" component={Results} />
                 </Switch>
             </Router>
         )
