@@ -20,10 +20,10 @@ class Home extends React.Component {
 
     this.state = {                          //keeps track of state of users current search
       search: '',
-      dateFrom: new Date("01/01/1990"),
+      dateFrom: new Date("01/01/2020"),
       dateTo: new Date(),
-      selectField: 'Select...',
-      selectOperator: 'Select...',
+      selectField: 'Nothing Selected...',
+      selectOperator: '',
       selectValue: '',
       constraints: []
     };
@@ -86,8 +86,8 @@ class Home extends React.Component {
 
       if (constraints !== null) {                 //update UI
         this.setState({
-          selectField: 'Select...',
-          selectOperator: 'Select...',
+          selectField: 'Nothing Selected...',
+          selectOperator: '',
           selectValue: '',
           constraints: constraints,
         })
@@ -148,7 +148,7 @@ class Home extends React.Component {
                     <Form.Group as={Col} controlId="formGridField">
                       <Form.Label style={{ float: "left" }}>FIELD</Form.Label>
                       <Form.Control as="select" value={this.state.selectField} onChange={this.selectFieldHandler}>
-                        <option>Select...</option>
+                        <option>Select a field...</option>
                         <option>Title</option>
                         <option>Author</option>
                         <option>Method</option>
@@ -158,7 +158,7 @@ class Home extends React.Component {
                     <Form.Group as={Col} controlId="formGridOperator">
                       <Form.Label style={{ float: "left" }}>OPERATOR</Form.Label>
                       <Form.Control as="select" value={this.state.selectOperator} onChange={this.selectOperatorHandler}>
-                        <option>Select...</option>
+                        <option>Select an operator...</option>
                         <option>Contains</option>
                         <option>Does not contains</option>
                         <option>Begins with</option>
