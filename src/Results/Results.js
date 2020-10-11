@@ -47,19 +47,17 @@ class Results extends React.Component {
   }
 
   getArticleResult = () => {
-    axios.post('/article/')
+    axios.post('/article/retrieve/completed')
       .then((response) => {
         const data = response.data;
         this.setState({ articleList: data });
       })
       .catch(() => {
         alert('Error retrieving data');
-      });
+    });
   }
 
   render() {
-    
-
     return (
       <div>
         <Navbar bg="light" variant="light">
@@ -93,7 +91,7 @@ class Results extends React.Component {
           </Navbar>
           {this.state.articleList.map(article => {
              return <div> 
-                <form onSubmit={this.handleSubmit}>
+                <form onSubmit={console.log("hello")}>
                   <div>
                     <Card>
                       <Card.Body>
@@ -102,7 +100,7 @@ class Results extends React.Component {
                           Author: {article.author}<br/>
                           Year: {article.year}<br/>
                         </Card.Text>
-                        <Button variant="primary">Details</Button>
+                        <Button variant="primary">Accept</Button>
                       </Card.Body>
                     </Card>
                   </div>

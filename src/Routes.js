@@ -8,6 +8,7 @@ import Home from "./Home/Home";
 import history from './history';
 import Submit from "./Submit/Submit";
 import Results from "./Results/Results";
+import Moderate from "./Moderate/Moderate";
 
 export default class Routes extends Component {
     render() {
@@ -20,6 +21,7 @@ export default class Routes extends Component {
                     <Route path="/Submit" component={Submit} />
                     <Route path="/Login" component={Login} />
                     <Route path="/Results" component={Results} />
+                    <Route path="/Moderate" component={Moderate} />
                 </Switch>
             </Router>
         )

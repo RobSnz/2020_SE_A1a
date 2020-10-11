@@ -26,7 +26,8 @@ class Article extends React.Component {
             ePrint: this.state.ePrint,
             ePrintType: this.state.ePrintType,
             ePrintClass: this.state.ePrintClass,
-            annote: this.state.annote
+            annote: this.state.annote,
+            status: 'toModerate'
         }
 
         storeArticle(articleSave);
