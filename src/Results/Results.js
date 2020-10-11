@@ -9,7 +9,6 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import SearchIcon from '@material-ui/icons/SearchSharp';
 import IconButton from '@material-ui/core/IconButton';
 import DatePicker from "react-datepicker";
-import getArticle from './getArticle';
 import axios from "axios";
 
 class Results extends React.Component {
@@ -21,7 +20,8 @@ class Results extends React.Component {
       dateFrom: new Date("01/01/1990"),
       dateTo: new Date(),
       constraints: [],
-      articleList: []
+      articleList: [],
+      data: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);                           //binders to handle data changes and present them
@@ -30,6 +30,7 @@ class Results extends React.Component {
   }
 
   componentDidMount = () => {
+    this.setState({ data: this.props.location });
     this.getArticleResult();
   };
 
@@ -57,7 +58,8 @@ class Results extends React.Component {
   }
 
   render() {
-    console.log(this.state.articleList)
+    
+
     return (
       <div>
         <Navbar bg="light" variant="light">
