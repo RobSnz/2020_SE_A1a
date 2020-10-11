@@ -15,22 +15,25 @@ class Results extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {                          //keeps track of state of users current search
+    this.state = {
       search: '',
-      dateFrom: new Date("01/01/1990"),
+      dateFrom: new Date(),
       dateTo: new Date(),
       constraints: [],
-      articleList: [],
-      data: ''
+      articleList: []
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);                           //binders to handle data changes and present them
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handleToDate = this.handleToDate.bind(this);
   }
 
   componentDidMount = () => {
-    this.setState({ data: this.props.location });
+    console.log(this.props.location.data.constraints[0]);
+    this.setState({ constraints: this.props.location.data.constraints });
+    this.setState({ dateFrom: this.props.location.data.dateFrom });
+    this.setState({ dateTo: this.props.location.data.dateTo });
+    this.setState({ search: this.props.location.data.search });
     this.getArticleResult();
   };
 
@@ -42,7 +45,7 @@ class Results extends React.Component {
     this.setState({ dateTo });
   };
 
-  handleSubmit(event) {                                               //once user clicks on search
+  handleSubmit(event) {
     event.preventDefault();
   }
 

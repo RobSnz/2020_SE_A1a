@@ -119,7 +119,7 @@ class Home extends React.Component {
                 />
                 <InputGroup.Append>
                   <IconButton >
-                    <Link to={{ pathname: '/Results', data: "test" }}><SearchIcon aria-label="search" style={{ float: "right", margin: "-5px 0 0 0", color: "grey" }}/></Link>
+                    <Link to={{ pathname: '/Results', data: this.state }}><SearchIcon aria-label="search" style={{ float: "right", margin: "-5px 0 0 0", color: "grey" }}/></Link>
                   </IconButton>
                 </InputGroup.Append>
               </InputGroup>
