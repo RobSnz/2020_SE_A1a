@@ -11,6 +11,7 @@ const Navigation = (props) => {
         <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto"></Nav>
             <Nav>
+                <Nav.Link href="/analyst">Analyst</Nav.Link>
                 <Nav.Link href="/moderate">mod</Nav.Link>
                 <Nav.Link href="/submit">Submit</Nav.Link>
                 <Nav.Link href="/login">Login</Nav.Link>
