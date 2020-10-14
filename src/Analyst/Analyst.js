@@ -24,22 +24,40 @@ const Analyst = () => {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-
   const [value, setValue] = React.useState("");
   const [field, setField] = React.useState("");
   const [operator, setOperator] = React.useState("");
+  const [keyValues, setKeyValues] = React.useState([]);
 
-  const selectFieldHandler = (e) =>{
+  const selectFieldHandler = (e) => {
     setField(e.target.value);
   };
 
-  const selectOperatorHandler = (e) =>{
+  const selectOperatorHandler = (e) => {
     setOperator(e.target.value);
   };
 
-  const selectValueHandler = (e) =>{
+  const selectValueHandler = (e) => {
     setValue(e.target.value);
-  }
+  };
+
+  const addKeyValueHandler = (e) => {
+    e.preventDefault();
+    setKeyValues([...keyValues, { field: field, operator: operator, value: value, id: Math.random() * 1000 }
+    ]);
+
+    if (keyValues !== null) {                 //update UI
+      setValue("");
+      setField("");
+      setOperator("");
+    } else {
+      //notify user - STILL NEED TO DO THIS
+    }
+  };
+
+  const removeKeyValueHandler = id => {
+    setKeyValues(keyValues.filter(item => item.id !== id));
+  };
 
   return (
     <div className={styles.analystQueue}>
@@ -117,8 +135,8 @@ const Analyst = () => {
                   <option>Benefit</option>
                 </Form.Control>
               </Form.Group>
-              <Form.Group as={Col} controlId="formGridOperator" value={operator} onChange={selectOperatorHandler}>
-                <Form.Control as="select">
+              <Form.Group as={Col} controlId="formGridOperator">
+                <Form.Control as="select" value={operator} onChange={selectOperatorHandler}>
                   <option>Select an operator...</option>
                   <option>Contains</option>
                   <option>Does not contains</option>
@@ -137,7 +155,7 @@ const Analyst = () => {
                     onChange={selectValueHandler}
                   />
                   <InputGroup.Append>
-                    <IconButton aria-label="add" style={{ float: "right", margin: "-5px 0 0 0" }}>
+                    <IconButton onClick={addKeyValueHandler} aria-label="add" style={{ float: "right", margin: "-5px 0 0 0" }}>
                       <AddIcon />
                     </IconButton>
                   </InputGroup.Append>
@@ -145,6 +163,18 @@ const Analyst = () => {
               </Form.Group>
             </Form.Row>
           </Form>
+          <ListGroup>
+            {keyValues.map(item => (
+              <InputGroup className="mb-3" style={{ width: "100%", alignItems: "center" }}>
+                <ListGroup.Item>{item.field} {item.operator} {item.value}</ListGroup.Item>
+                <InputGroup.Append>
+                  <IconButton onClick={() => removeKeyValueHandler(item.id)} aria-label="remove" style={{ float: "right", margin: "-5px 0 0 0" }}>
+                    <RemoveIcon />
+                  </IconButton>
+                </InputGroup.Append>
+              </InputGroup>
+            ))}
+          </ListGroup>
         </Modal.Body>
         <Modal.Footer>
           <Button>Accept</Button>
