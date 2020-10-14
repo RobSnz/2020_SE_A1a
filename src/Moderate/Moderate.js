@@ -27,7 +27,8 @@ class Moderate extends React.Component {
 
     axios.put('/article/update', body)
       .then((response) => {
-        alert(response);
+        console.log(response);
+        alert("Successfully Updated");
         this.componentDidMount();
       })
       .catch(() => {
