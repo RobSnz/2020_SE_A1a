@@ -3,6 +3,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { Navbar } from 'react-bootstrap';
 import axios from "axios";
+import styles from '../mystyle.module.css';
 
 class Moderate extends React.Component {
   constructor(props) {
@@ -44,21 +45,30 @@ class Moderate extends React.Component {
     return (
       <div>
         <Navbar bg="light" variant="light"></Navbar>
-            {this.state.articleList.map(article => {
-                return <div>
-                    <Card>
-                      <Card.Body>
-                        <Card.Title>Title: {article.title}</Card.Title>
-                          <Card.Text>
-                            Author: {article.author}<br/>
-                            Year: {article.year}<br/>
-                          </Card.Text>
-                        <Button type="submit" onClick={(e) => this.handleSubmit(e, article.title, "accepted")}>Accept</Button>
-                        <Button type="submit" onClick={(e) => this.handleSubmit(e, article.title, "rejected")}>Decline</Button>
-                      </Card.Body>
-                    </Card>
-                </div>;
-            })}
+        <div>
+          <ul className={styles.moderateStyle}>
+          {this.state.articleList.map(article => {
+            return <div>
+              <Card>
+                <Card.Body>
+                  <Card.Title>Title: {article.title}</Card.Title>
+                    <Card.Text>
+                      Author: {article.author}<br/>
+                      Year: {article.year}<br/>
+                      Month: {article.month}<br/>
+                      Volume: {article.volume}<br/>
+                      Number of pages: {article.numOfPages}<br/>
+                      ePrint: {article.ePrint}<br/>
+                      ePrintType: {article.ePrintType}<br/>
+                      ePrintClass: {article.annote}<br/>
+                    </Card.Text>
+                  <Button type="submit" className={styles.moderateButton} onClick={(e) => this.handleSubmit(e, article.title, "accepted")}>Accept</Button>
+                  <Button type="submit" onClick={(e) => this.handleSubmit(e, article.title, "rejected")}>Decline</Button>
+                </Card.Body>
+              </Card>
+            </div>;
+          })}</ul>
+        </div>
       </div>
     );
   }
