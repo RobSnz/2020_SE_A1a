@@ -29,11 +29,8 @@ router.route('/add').post((req, res) => {
     .catch(err => res.status(400).json('err: ' + err));
 });
 
-router.put('/update/:id/:status', function(req, res) {
-    var id = req.params.id;
-    var status = req.params.status;
-
-    Article.findOne({title: id}, function(err, foundObject) {
+router.put('/update', function(req, res) {
+    Article.findOne({title: req.body.title}, function(err, foundObject) {
         if(err) {
             console.log(err);
             res.status(500).send();
@@ -41,7 +38,15 @@ router.put('/update/:id/:status', function(req, res) {
             if(!foundObject) {
                 res.status(404).send();
             } else {
-                foundObject.status = status;
+                if(req.body.author != null) foundObject.author = req.body.author;
+                if(req.body.month != null) foundObject.month = req.body.month;
+                if(req.body.volume != null) foundObject.volume = req.body.volume;
+                if(req.body.numOfPages != null) foundObject.numOfPages = req.body.numOfPages;
+                if(req.body.ePrint != null) foundObject.ePrint = req.body.ePrint;
+                if(req.body.ePrintType != null) foundObject.ePrintType = req.body.ePrintTypev;
+                if(req.body.ePrintClass != null) foundObject.ePrintClass = req.body.ePrintClass;
+                if(req.body.annote != null) foundObject.annote = req.body.annote;
+                if(req.body.status != null) foundObject.status = req.body.status;
 
                 foundObject.save(function(err, updatedObject) {
                     if(err) {

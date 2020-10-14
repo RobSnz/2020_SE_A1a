@@ -20,9 +20,14 @@ class Moderate extends React.Component {
   handleSubmit(event, title, status) {
     event.preventDefault();
 
-    axios.put('/article/update/' + title + "/" + status)
+    const body = {
+      title: title,
+      status: status
+    };
+
+    axios.put('/article/update', body)
       .then((response) => {
-        alert("Article has successfully been updated.");
+        alert(response);
         this.componentDidMount();
       })
       .catch(() => {
