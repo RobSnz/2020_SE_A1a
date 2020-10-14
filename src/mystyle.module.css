@@ -13,7 +13,6 @@
     position: fixed;
 }
 
-
 .registerBox {
     display: flex;
     justify-content: center;
@@ -163,4 +162,10 @@
     border: 1px solid grey;
     border-radius: 10px;
     width: 320px;
+}
+
+.analystQueue{
+    padding-top: 80px;
+    margin: auto;
+    width: 30%;/*575px*/
 }
