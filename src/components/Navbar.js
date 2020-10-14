@@ -14,7 +14,7 @@ const Navigation = (props) => {
                 <NavDropdown title="Features" id="basic-nav-dropdown">
                     <NavDropdown.Item href="/submit">Submit</NavDropdown.Item>
                     <NavDropdown.Item href="/moderate">Moderate</NavDropdown.Item>
-                    <Nav.Link href="/analyst">Analyst</Nav.Link>
+                    <NavDropdown.Item href="/analyst">Analyst</NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link href="/login">Login</Nav.Link>
             </Nav>
