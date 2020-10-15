@@ -71,6 +71,18 @@ class Results extends React.Component {
               }
             }
           }
+          if(field == "author") {
+            var author = this.state.articleList[i].author.toLowerCase();
+            if(op == "contains") {
+              if(!author.includes(value)) {
+                this.state.articleList.splice(i, 1);
+              }
+            } else if(op == "does not contain") {
+              if(title.includes(value)) {
+                this.state.articleList.splice(i, 1);
+              }
+            }
+          }
         }
       }
     }
