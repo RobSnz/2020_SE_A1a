@@ -7,7 +7,7 @@ const articleScheme = new Schema({
     author: { type: String, required: false},
     month: { type: String, required: false},
     volume: { type: String, required: false},
-    pageNum: { type: String, required: false},
+    pagesNum: { type: String, required: false},
     numOfPages: { type: String, required: false},
     ePrint: { type: String, required: false},
     ePrintType: { type: String, required: false},

@@ -69,7 +69,7 @@ class Article extends React.Component {
                                             style={{ width: "100px", marginRight: "10px"}} className={ styles.articleBoxes }
                                         />
                                         <input onKeyDown={ (e) => { if(e.key === 13) this.handleSubmit(e);}}
-                                            type='text' placeholder='Page no.' onChange={(e) => this.setState({ pagesNum: e.target.value })}
+                                            type='text' placeholder='Page no(s).' onChange={(e) => this.setState({ pagesNum: e.target.value })}
                                             value={ this.state.pagesNum } 
                                             style={{ width: "100px", marginRight: "10px"}} className={ styles.articleBoxes }
                                         />
