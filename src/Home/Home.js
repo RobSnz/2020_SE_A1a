@@ -96,11 +96,11 @@ class Home extends React.Component {
               <Form>
                 <Form.Row>
                   <Form.Group as={Col} controlId="dateFromPicker">
-                    <Form.Label style={{ float: "left" }}>DATE FROM</Form.Label>
+                    <Form.Label style={{ float: "left", paddingRight:"10px" }}>DATE FROM</Form.Label>
                     <DatePicker className="dateFontSize" selected={this.state.dateFrom} onChange={this.handleFromDate} />
                   </Form.Group>
                   <Form.Group as={Col} controlId="dateToPicker">
-                    <Form.Label style={{ float: "left" }}>DATE TO</Form.Label>
+                    <Form.Label style={{ float: "left", paddingRight:"50px" }}>DATE TO</Form.Label>
                     <DatePicker className="dateFontSize" selected={this.state.dateTo} onChange={this.handleToDate} minDate={this.state.dateFrom} />
                   </Form.Group>
                 </Form.Row>
@@ -153,7 +153,7 @@ class Home extends React.Component {
                 <div className="mainPageHeadings">CONSTRAINTS</div>
                 <ListGroup>
                   {this.state.constraints.map(item => (
-                    <InputGroup className="mb-3" style={{ width: "100%", alignItems: "center" }}>
+                    <InputGroup className="mb-3" style={{ width: "150%", alignItems: "left" }}>
                       <ListGroup.Item>{item.field} {item.operator} {item.value}</ListGroup.Item>
                       <InputGroup.Append>
                         <IconButton onClick={() => this.removeConstraintHandler(item.id)} aria-label="remove" style={{ float: "right", margin: "-5px 0 0 0" }}>
