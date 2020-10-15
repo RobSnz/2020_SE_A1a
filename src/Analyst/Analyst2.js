@@ -95,7 +95,6 @@ class Analyst2 extends React.Component {
         const operator2 = this.state.operator;
         const value2 = this.state.value;
 
-        //this.setState({ keyValues: { field: field2, operator: operator2, value: value2, id: Math.random() * 1000 } });
         this.state.keyValues.push({ field: field2, operator: operator2, value: value2, id: Math.random() * 1000 });
 
         if(this.state.keyValues !== null) {                 //update UI
