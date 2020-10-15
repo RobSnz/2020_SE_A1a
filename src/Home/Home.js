@@ -125,11 +125,6 @@ class Home extends React.Component {
                       <option>Select an operator...</option>
                       <option>Contains</option>
                       <option>Does not contain</option>
-                      <option>Begins with</option>
-                      <option>Ends with</option>
-                      <option>Is equal to</option>
-                      <option>Is greather than</option>
-                      <option>Is less than</option>
                     </Form.Control>
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridValue">

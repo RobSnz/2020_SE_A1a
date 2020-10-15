@@ -201,8 +201,6 @@ class Analyst2 extends React.Component {
                     <Form.Group as={Col} controlId="formGridField">
                         <Form.Control as="select" value={this.state.field} onChange={this.selectFieldHandler}>
                         <option>Select a field...</option>
-                        <option>Title</option>
-                        <option>Author</option>
                         <option>Method</option>
                         <option>Benefit</option>
                         </Form.Control>
@@ -212,11 +210,6 @@ class Analyst2 extends React.Component {
                         <option>Select an operator...</option>
                         <option>Contains</option>
                         <option>Does not contains</option>
-                        <option>Begins with</option>
-                        <option>Ends with</option>
-                        <option>Is equal to</option>
-                        <option>Is greather than</option>
-                        <option>Is less than</option>
                         </Form.Control>
                     </Form.Group>
                     <Form.Group as={Col} controlId="formGridValue">
