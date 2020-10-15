@@ -1,5 +1,4 @@
 import React from "react";
-//import '../mystyle.module.css';
 import './Home.css';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/AddCircle';
@@ -11,9 +10,7 @@ import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import DatePicker from "react-datepicker";
 import ListGroup from 'react-bootstrap/ListGroup';
-//import HomeFunctions from './HomeFunctions.js'
 import "react-datepicker/dist/react-datepicker.css";
-//const HomeFunctions = require('./HomeFunctions');
 import {Link} from "react-router-dom";
 
 class Home extends React.Component {
@@ -21,7 +18,7 @@ class Home extends React.Component {
     super(props);
 
     this.state = {                          //keeps track of state of users current search
-      search: '',
+      search: "",
       dateFrom: new Date("01/01/2020"),
       dateTo: new Date(),
       selectField: 'Nothing Selected...',
@@ -30,24 +27,14 @@ class Home extends React.Component {
       constraints: []
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);                           //binders to handle data changes and present them
     this.handleFromDate = this.handleFromDate.bind(this);
     this.handleToDate = this.handleToDate.bind(this);
     this.selectFieldHandler = this.selectFieldHandler.bind(this);
     this.addConstraintHandler = this.addConstraintHandler.bind(this);
     this.selectOperatorHandler = this.selectOperatorHandler.bind(this);
     this.selectValueHandler = this.selectValueHandler.bind(this);
+    this.updateSearch = this.updateSearch.bind(this);
     this.removeConstraintHandler = this.removeConstraintHandler.bind(this);
-  }
-
-  handleSubmit(event) {                                               //once user clicks on search
-    event.preventDefault();
-
-    const { search } = this.state;
-
-    console.log(search);
-
-    this.setState({ search: '' })   //reset all variables?
   }
 
   handleFromDate = dateFrom => {
@@ -70,40 +57,18 @@ class Home extends React.Component {
     this.setState({ selectValue: event.target.value });         //updates value
   }
 
-  addConstraintHandler() {                               //handles add constraint event
-    this.setState(() => {
-      const item = {                                //creates constraint item based off users selections
-        field: this.state.selectField,
-        operator: this.state.selectOperator,
-        value: this.state.selectValue,
-        id: Math.random() * 1000                  //random ID - NEED TO CHANGE THIS STILL
-      }
+  updateSearch(event) {
+    this.setState({ search: event.target.value });         //updates value
+  }
+  
+  addConstraintHandler() {
+    this.state.constraints.push({field: this.state.selectField, operator: this.state.selectOperator, value: this.state.selectValue, id: Math.random() * 1000 });
 
-      //const constraints = HomeFunctions.addConstraint(this.state.constraints, item);      //attempts to add constraint to users constraint list'
-      const constraints = [...this.state.constraints, { field: item.field, operator: item.operator, value: item.value, id: item.id }];        //appends on to current constraint array
-
-      if (constraints !== null) {                 //update UI
-        this.setState({
-          selectField: 'Nothing Selected...',
-          selectOperator: '',
-          selectValue: '',
-          constraints: constraints,
-        })
-      } else{
-        //notify user - STILL NEED TO DO THIS
-      }
-    });
+    this.setState({ selectField: 'Nothing Selected...',  selectOperator: '', selectValue: '' });
   }
 
   removeConstraintHandler = id => { 
-    this.setState(() => {
-      //const constraints = HomeFunctions.removeConstraint(this.state.constraints, id);   //uses ID to remove constraint from list
-      const constraints = this.state.constraints.filter(item => item.id !== id); 
-
-      this.setState({
-        constraints: constraints        //updates list of constraints
-      })
-    });
+    this.state.constraints = this.state.constraints.filter(item => item.id !== id); 
   }
 
   render() {
@@ -115,11 +80,13 @@ class Home extends React.Component {
               <h1 style={{ float: "left" }}>SEARCH ARTICLES</h1>
               <InputGroup className="mb-3">
                 <FormControl
+                  value={this.state.search}
+                  onChange={this.updateSearch}
                   placeholder="What are you looking for?"
                   aria-describedby="basic-addon2"
                 />
                 <InputGroup.Append>
-                  <IconButton >
+                  <IconButton>
                     <Link to={{ pathname: '/Results', data: this.state }}><SearchIcon aria-label="search" style={{ float: "right", margin: "-5px 0 0 0", color: "grey" }}/></Link>
                   </IconButton>
                 </InputGroup.Append>
@@ -157,7 +124,7 @@ class Home extends React.Component {
                     <Form.Control as="select" value={this.state.selectOperator} onChange={this.selectOperatorHandler}>
                       <option>Select an operator...</option>
                       <option>Contains</option>
-                      <option>Does not contains</option>
+                      <option>Does not contain</option>
                       <option>Begins with</option>
                       <option>Ends with</option>
                       <option>Is equal to</option>

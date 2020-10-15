@@ -2,7 +2,6 @@ const router = require('express').Router();
 let Article = require('../models/article.model');
 
 router.route('/retrieve/:id').post((req, res) => {
-    console.log(req.params.id)
     Article.find({ status: req.params.id })
         .then((data) => {
             res.json(data);
