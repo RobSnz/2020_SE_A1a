@@ -3,18 +3,13 @@ import styles from '../mystyle.module.css';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/AddCircle';
 import RemoveIcon from '@material-ui/icons/RemoveCircle'
-import SearchIcon from '@material-ui/icons/SearchSharp';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
-import DatePicker from "react-datepicker";
 import ListGroup from 'react-bootstrap/ListGroup';
 import Modal from 'react-bootstrap/Modal'
-//import AnalystFunctions from './AnalystFunctions.js'
 import "react-datepicker/dist/react-datepicker.css";
-//const AnalystFunctions = require('./AnalystFunctions');
-import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -30,14 +25,9 @@ class Analyst2 extends React.Component {
             field: "",
             operator: "",
             keyValues: [],
-            articleList: []
+            articleList: [],
+            modelInformation: []
         }
-        /*
-        const [value, setValue] = React.useState("");
-        const [field, setField] = React.useState("");
-        const [operator, setOperator] = React.useState("");
-        const [keyValues, setKeyValues] = React.useState([]);
-        var [articleList, setArticleList] = React.useState([]);*/
     }
 
     handleSubmit = (e, title) => {
@@ -53,8 +43,16 @@ class Analyst2 extends React.Component {
         this.setShow(false);
     }
 
-    handleOpen = () => {
+    handleOpen = (e, article) => {
+        console.log(article);
         this.setShow(true);
+    }
+
+    updateDetails = (article) => {
+        this.setState({ modelInformation: { title: article.title, 
+        author: article.author, volume: article.volume, noOfPages: article.noOfPages,
+        year: article.year, month: article.month, ePrint: article.ePrint, ePrintType: article.ePrintType,
+        ePrintClass: article.ePrintType, annote: article.annote}});
     }
 
     componentDidMount = () => {
@@ -75,23 +73,33 @@ class Analyst2 extends React.Component {
   
     addKeyValueHandler = (e) => {
         e.preventDefault();
-        const field = this.state.field;
-        const operator = this.state.operator;
-        const value = this.state.value;
+        const field2 = this.state.field;
+        const operator2 = this.state.operator;
+        const value2 = this.state.value;
 
-        this.setstate({ keyValues: { field: field, operator: operator, value: value, id: Math.random() * 1000 } });
-    
-        if (this.state.keyValues !== null) {                 //update UI
-            this.setstate({value: "" });
-            this.setstate({field: "" });
-            this.setstate({operator: "" });
+        //this.setState({ keyValues: { field: field2, operator: operator2, value: value2, id: Math.random() * 1000 } });
+        this.state.keyValues.push({ field: field2, operator: operator2, value: value2, id: Math.random() * 1000 });
+
+        if(this.state.keyValues !== null) {                 //update UI
+            this.setState({value: "" });
+            this.setState({field: "" });
+            this.setState({operator: "" });
         } else {
             //notify user - STILL NEED TO DO THIS
         }
     };
   
     removeKeyValueHandler = id => {
-      this.setstate({ keyValues: this.state.keyValues.filter(item => item.id !== id) });
+        //this.setstate({ keyValues: this.state.keyValues.filter(item => item.id !== id) });
+        this.state.keyValues = this.state.keyValues.filter(item => item.id !== id);
+        
+        if(this.state.keyValues !== null) {                 //update UI
+            this.setState({value: "" });
+            this.setState({field: "" });
+            this.setState({operator: "" });
+        } else {
+            //notify user - STILL NEED TO DO THIS
+        }
     };
   
     getArticleResult = () => {
@@ -112,14 +120,17 @@ class Analyst2 extends React.Component {
 
             <ListGroup>
             {this.state.articleList.map(article => {
-                return <div><ListGroup.Item action onClick={this.handleOpen}>
+                return <div><ListGroup.Item action onClick={(e) => {this.handleOpen(e, article); this.updateDetails(article)}}>
                     Title: {article.title}
                 </ListGroup.Item>
+                </div>
+            })}
+            </ListGroup>
 
-                <Modal show={this.state.show} onHide={this.handleClose}>
+            <Modal show={this.state.show} onHide={this.handleClose}>
                 <Modal.Header closeButton>
                 <Modal.Title>
-                    {article.title}
+                    {this.state.modelInformation.title}
                 </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
@@ -129,8 +140,8 @@ class Analyst2 extends React.Component {
                     <Col><b>Volume</b></Col>
                     </Row>
                     <Row>
-                    <Col>{article.author}</Col>
-                    <Col>{article.volume}</Col>
+                    <Col>{this.state.modelInformation.author}</Col>
+                    <Col>{this.state.modelInformation.volume}</Col>
                     </Row>
                     <Row>
                     <Col><b>Page no.</b></Col>
@@ -138,31 +149,31 @@ class Analyst2 extends React.Component {
                     </Row>
                     <Row>
                     <Col>---</Col>
-                    <Col>{article.numOfPages}</Col>
+                    <Col>{this.state.modelInformation.numOfPages}</Col>
                     </Row>
                     <Row>
                     <Col><b>Year</b></Col>
                     <Col><b>Month</b></Col>
                     </Row>
                     <Row>
-                    <Col>{article.year}</Col>
-                    <Col>{article.month}</Col>
+                    <Col>{this.state.modelInformation.year}</Col>
+                    <Col>{this.state.modelInformation.month}</Col>
                     </Row>
                     <Row>
                     <Col><b>E-Print</b></Col>
                     <Col><b>E-Print Type</b></Col>
                     </Row>
                     <Row>
-                    <Col>{article.ePrint}</Col>
-                    <Col>{article.ePrintType}</Col>
+                    <Col>{this.state.modelInformation.ePrint}</Col>
+                    <Col>{this.state.modelInformation.ePrintType}</Col>
                     </Row>
                     <Row>
                     <Col><b>E-Print Class</b></Col>
                     <Col><b>Annote</b></Col>
                     </Row>
                     <Row>
-                    <Col>{article.ePrintClass}</Col>
-                    <Col>{article.annote}</Col>
+                    <Col>{this.state.modelInformation.ePrintClass}</Col>
+                    <Col>{this.state.modelInformation.annote}</Col>
                     </Row>
                 </Container>
                 <Form style={{ marginTop: "10px" }}>
@@ -206,26 +217,23 @@ class Analyst2 extends React.Component {
                     </Form.Row>
                 </Form>
                 <ListGroup>
-                    {this.state.keyValues.map(item => (
-                    <InputGroup className="mb-3" style={{ width: "100%", alignItems: "center" }}>
-                        <ListGroup.Item>{item.field} {item.operator} {item.value}</ListGroup.Item>
-                        <InputGroup.Append>
-                        <IconButton onClick={() => this.removeKeyValueHandler(item.id)} aria-label="remove" style={{ float: "right", margin: "-5px 0 0 0" }}>
-                            <RemoveIcon />
-                        </IconButton>
-                        </InputGroup.Append>
-                    </InputGroup>
+                    {this.state.keyValues.map(thing => (
+                        <InputGroup className="mb-3" style={{ width: "100%", alignItems: "center" }}>
+                            <ListGroup.Item>{thing.field} {thing.operator} {thing.value}</ListGroup.Item>
+                            <InputGroup.Append>
+                            <IconButton onClick={() => this.removeKeyValueHandler(thing.id)} aria-label="remove" style={{ float: "right", margin: "-5px 0 0 0" }}>
+                                <RemoveIcon />
+                            </IconButton>
+                            </InputGroup.Append>
+                        </InputGroup>
                     ))}
                 </ListGroup>
                 </Modal.Body>
                 <Modal.Footer>
                 <Button>Accept</Button>
-                <Button onClick={(e) => this.handleSubmit(e, article.title)}>Reject</Button>
+                <Button onClick={(e) => this.handleSubmit()}>Reject</Button>
                 </Modal.Footer>
-                </Modal>
-                </div>
-            })}
-            </ListGroup>
+            </Modal>
         </div>
       );
     }
