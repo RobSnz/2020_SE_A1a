@@ -136,7 +136,7 @@ class Results extends React.Component {
     this.setState({
       modelInformation: {
         title: article.title,
-        author: article.author, volume: article.volume, noOfPages: article.noOfPages,
+        author: article.author, volume: article.volume, pagesNum: article.pagesNum, numOfPages: article.numOfPages,
         year: article.year, month: article.month, ePrint: article.ePrint, ePrintType: article.ePrintType,
         ePrintClass: article.ePrintType, annote: article.annote
       }
@@ -237,7 +237,7 @@ class Results extends React.Component {
                 <Col><b>No. of Pages</b></Col>
               </Row>
               <Row>
-                <Col>---</Col>
+                <Col>{this.state.modelInformation.pagesNum}</Col>
                 <Col>{this.state.modelInformation.numOfPages}</Col>
               </Row>
               <Row>
