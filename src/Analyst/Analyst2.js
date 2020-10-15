@@ -50,6 +50,8 @@ class Analyst2 extends React.Component {
             .catch(() => {
                 alert('Error retrieving data');
             });
+        
+        this.setState({ keyValues: [] })
     }
 
     setShow = (boolean) => {
