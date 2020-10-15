@@ -8,7 +8,7 @@ import FormControl from 'react-bootstrap/FormControl';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Modal from 'react-bootstrap/Modal'
+import Modal from 'react-bootstrap/Modal';
 import "react-datepicker/dist/react-datepicker.css";
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
