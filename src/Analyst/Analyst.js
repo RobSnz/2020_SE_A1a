@@ -18,6 +18,7 @@ import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import axios from "axios";
 
 const Analyst = () => {
   const [show, setShow] = React.useState(false);
@@ -28,6 +29,7 @@ const Analyst = () => {
   const [field, setField] = React.useState("");
   const [operator, setOperator] = React.useState("");
   const [keyValues, setKeyValues] = React.useState([]);
+  var [articleList, setArticleList] = React.useState([]);
 
   const selectFieldHandler = (e) => {
     setField(e.target.value);
@@ -59,19 +61,36 @@ const Analyst = () => {
     setKeyValues(keyValues.filter(item => item.id !== id));
   };
 
+  const getArticleResult = () => {
+    if(load) {
+      axios.post('/article/retrieve/toModerate')
+        .then((response) => {
+          const data = response.data;
+          setArticleList(data);
+        })
+        .catch(() => {
+          alert('Error retrieving data');
+        });
+    }
+  }
+
   return (
     <div className={styles.analystQueue}>
       <h1>ANALYSE ARTICLES</h1>
+      {getArticleResult()}
+      {articleList.map(article =>{
+        console.log(article);
+      })}
       <ListGroup>
         <ListGroup.Item action onClick={handleShow}>
           Article 1
-              </ListGroup.Item>
+          </ListGroup.Item>
         <ListGroup.Item action onClick={handleShow}>
           Article 2
-              </ListGroup.Item>
+          </ListGroup.Item>
         <ListGroup.Item action onClick={handleShow}>
           Article 3
-              </ListGroup.Item>
+          </ListGroup.Item>
       </ListGroup>
 
       <Modal show={show} onHide={handleClose}>

@@ -9,7 +9,7 @@ import history from './history';
 import Submit from "./Submit/Submit";
 import Results from "./Results/Results";
 import Moderate from "./Moderate/Moderate";
-import Analyst from "./Analyst/Analyst";
+import Analyst2 from "./Analyst/Analyst2";
 
 export default class Routes extends Component {
     render() {
@@ -23,7 +23,7 @@ export default class Routes extends Component {
                     <Route path="/Login" component={Login} />
                     <Route path="/Results" component={Results} />
                     <Route path="/Moderate" component={Moderate} />
-                    <Route path="/Analyst" component={Analyst} />
+                    <Route path="/Analyst" component={Analyst2} />
                 </Switch>
             </Router>
         )
