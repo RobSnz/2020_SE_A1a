@@ -68,7 +68,7 @@ class Moderate extends React.Component {
                       ePrintType: {article.ePrintType}<br/>
                       ePrintClass: {article.annote}<br/>
                     </Card.Text>
-                  <Button type="submit" className={styles.moderateButton} onClick={(e) => this.handleSubmit(e, article.title, "accepted")}>Accept</Button>
+                  <Button type="submit" className={styles.moderateButton} onClick={(e) => this.handleSubmit(e, article.title, "toAnalyse")}>Accept</Button>
                   <Button type="submit" onClick={(e) => this.handleSubmit(e, article.title, "rejected")}>Decline</Button>
                 </Card.Body>
               </Card>

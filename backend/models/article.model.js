@@ -14,6 +14,7 @@ const articleScheme = new Schema({
     ePrintClass: { type: String, required: false},
     annote: { type: String, required: false},
     status: { type: String, required: true},
+    keyValues: { type: Array, required: false}
 }, {
     timestamps: true,
 });

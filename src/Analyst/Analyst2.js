@@ -30,9 +30,26 @@ class Analyst2 extends React.Component {
         }
     }
 
-    handleSubmit = (e, title) => {
-        console.log(title)
+    handleSubmit = (e, status) => {
+        e.preventDefault();
         this.componentDidMount();
+
+        const body = {
+            title: this.state.modelInformation.title,
+            status: status,
+            keyValues: this.state.keyValues
+        };
+
+        axios.put('/article/update', body)
+            .then((response) => {
+                console.log(response);
+                alert("Successfully Updated");
+                this.componentDidMount();
+                this.setShow(false);
+            })
+            .catch(() => {
+                alert('Error retrieving data');
+            });
     }
 
     setShow = (boolean) => {
@@ -40,6 +57,7 @@ class Analyst2 extends React.Component {
     }
 
     handleClose = () => {
+        this.setState({ keyValues: [] })
         this.setShow(false);
     }
 
@@ -92,7 +110,7 @@ class Analyst2 extends React.Component {
     removeKeyValueHandler = id => {
         //this.setstate({ keyValues: this.state.keyValues.filter(item => item.id !== id) });
         this.state.keyValues = this.state.keyValues.filter(item => item.id !== id);
-        
+
         if(this.state.keyValues !== null) {                 //update UI
             this.setState({value: "" });
             this.setState({field: "" });
@@ -103,7 +121,7 @@ class Analyst2 extends React.Component {
     };
   
     getArticleResult = () => {
-        axios.post('/article/retrieve/toModerate')
+        axios.post('/article/retrieve/toAnalyse')
             .then((response) => {
                 const data = response.data;
                 this.setState({ articleList: data });
@@ -230,8 +248,8 @@ class Analyst2 extends React.Component {
                 </ListGroup>
                 </Modal.Body>
                 <Modal.Footer>
-                <Button>Accept</Button>
-                <Button onClick={(e) => this.handleSubmit()}>Reject</Button>
+                <Button onClick={(e) => this.handleSubmit(e, "accepted")}>Accept</Button>
+                <Button onClick={(e) => this.handleSubmit(e, "rejected")}>Reject</Button>
                 </Modal.Footer>
             </Modal>
         </div>

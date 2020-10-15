@@ -2,6 +2,7 @@ const router = require('express').Router();
 let Article = require('../models/article.model');
 
 router.route('/retrieve/:id').post((req, res) => {
+    console.log(req.params.id)
     Article.find({ status: req.params.id })
         .then((data) => {
             res.json(data);
@@ -47,6 +48,7 @@ router.put('/update', function(req, res) {
                 if(req.body.ePrintClass != null) foundObject.ePrintClass = req.body.ePrintClass;
                 if(req.body.annote != null) foundObject.annote = req.body.annote;
                 if(req.body.status != null) foundObject.status = req.body.status;
+                if(req.body.keyValues != null) foundObject.keyValues = req.body.keyValues;
 
                 foundObject.save(function(err, updatedObject) {
                     if(err) {
