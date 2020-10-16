@@ -152,7 +152,7 @@ class Analyst2 extends React.Component {
         } else {
             analystView = <h4>There are no articles awaiting analysis.</h4>;
         }
-        
+
         return (
             <div className={styles.analystQueue}>
                 <h1>ANALYSE ARTICLES</h1>

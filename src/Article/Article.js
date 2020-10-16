@@ -14,19 +14,85 @@ class Article extends React.Component {
 
     handleSubmit(event) {
         event.preventDefault();
+        let inputTitle;
+        if(this.state.title.trim() == ""){
+            inputTitle = "N/A"
+        } else {
+            inputTitle = this.state.title;
+        }
+        let inputYear;
+        if(this.state.year.trim() == ""){
+            inputYear = "N/A"
+        } else {
+            inputYear = this.state.year;
+        }
+        let inputAuthor;
+        if(this.state.author.trim() == ""){
+            inputAuthor = "N/A"
+        } else {
+            inputAuthor = this.state.author;
+        }
+        let inputMonth;
+        if(this.state.month.trim() == ""){
+            inputMonth = "N/A"
+        } else {
+            inputMonth = this.state.month;
+        }
+        let inputVolume;
+        if(this.state.volume.trim() == ""){
+            inputVolume = "N/A"
+        } else {
+            inputVolume = this.state.volume;
+        }
+        let inputPagesNum;
+        if(this.state.pagesNum.trim() == ""){
+            inputPagesNum = "N/A"
+        } else {
+            inputPagesNum = this.state.pagesNum;
+        }
+        let inputNumOfPages;
+        if(this.state.numOfPages.trim() == ""){
+            inputNumOfPages = "N/A"
+        } else {
+            inputNumOfPages = this.state.numOfPages;
+        }
+        let inputEPrint;
+        if(this.state.ePrint.trim() == ""){
+            inputEPrint = "N/A"
+        } else {
+            inputEPrint = this.state.ePrint;
+        }
+        let inputEPrintType;
+        if(this.state.ePrintType.trim() == ""){
+            inputEPrintType = "N/A"
+        } else {
+            inputEPrintType = this.state.ePrintType;
+        }
+        let inputEPrintClass;
+        if(this.state.ePrintClass.trim() == ""){
+            inputEPrintClass = "N/A"
+        } else {
+            inputEPrintClass = this.state.ePrintClass;
+        }
+        let inputAnnote;
+        if(this.state.annote.trim() == ""){
+            inputAnnote = "N/A"
+        } else {
+            inputAnnote = this.state.annote;
+        }
 
         const articleSave = {
-            title: this.state.title,
-            year: this.state.year,
-            author: this.state.author,
-            month: this.state.month,
-            volume: this.state.volume,
-            pagesNum: this.state.pagesNum,
-            numOfPages: this.state.numOfPages,
-            ePrint: this.state.ePrint,
-            ePrintType: this.state.ePrintType,
-            ePrintClass: this.state.ePrintClass,
-            annote: this.state.annote,
+            title: inputTitle,
+            year: inputYear,
+            author: inputAuthor,
+            month: inputMonth,
+            volume: inputVolume,
+            pagesNum: inputPagesNum,
+            numOfPages: inputNumOfPages,
+            ePrint: inputEPrint,
+            ePrintType: inputEPrintType,
+            ePrintClass: inputEPrintClass,
+            annote: inputAnnote,
             status: 'toModerate'
         }
 
