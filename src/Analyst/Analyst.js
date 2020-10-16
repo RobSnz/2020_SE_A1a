@@ -1,23 +1,23 @@
 import React from "react";
-import styles from '../mystyle.module.css';
-import IconButton from '@material-ui/core/IconButton';
-import AddIcon from '@material-ui/icons/AddCircle';
-import RemoveIcon from '@material-ui/icons/RemoveCircle'
-import SearchIcon from '@material-ui/icons/SearchSharp';
-import InputGroup from 'react-bootstrap/InputGroup';
-import FormControl from 'react-bootstrap/FormControl';
-import Form from 'react-bootstrap/Form';
-import Col from 'react-bootstrap/Col';
+import styles from "../mystyle.module.css";
+import IconButton from "@material-ui/core/IconButton";
+import AddIcon from "@material-ui/icons/AddCircle";
+import RemoveIcon from "@material-ui/icons/RemoveCircle";
+import SearchIcon from "@material-ui/icons/SearchSharp";
+import InputGroup from "react-bootstrap/InputGroup";
+import FormControl from "react-bootstrap/FormControl";
+import Form from "react-bootstrap/Form";
+import Col from "react-bootstrap/Col";
 import DatePicker from "react-datepicker";
-import ListGroup from 'react-bootstrap/ListGroup';
-import Modal from 'react-bootstrap/Modal'
+import ListGroup from "react-bootstrap/ListGroup";
+import Modal from "react-bootstrap/Modal";
 //import AnalystFunctions from './AnalystFunctions.js'
 import "react-datepicker/dist/react-datepicker.css";
 //const AnalystFunctions = require('./AnalystFunctions');
 import { Link } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
 import axios from "axios";
 
 const Analyst = () => {
@@ -45,10 +45,18 @@ const Analyst = () => {
 
   const addKeyValueHandler = (e) => {
     e.preventDefault();
-    setKeyValues([...keyValues, { field: field, operator: operator, value: value, id: Math.random() * 1000 }
+    setKeyValues([
+      ...keyValues,
+      {
+        field: field,
+        operator: operator,
+        value: value,
+        id: Math.random() * 1000,
+      },
     ]);
 
-    if(keyValues !== null) {                 //update UI
+    if (keyValues !== null) {
+      //update UI
       setValue("");
       setField("");
       setOperator("");
@@ -57,85 +65,104 @@ const Analyst = () => {
     }
   };
 
-  const removeKeyValueHandler = id => {
-    setKeyValues(keyValues.filter(item => item.id !== id));
+  const removeKeyValueHandler = (id) => {
+    setKeyValues(keyValues.filter((item) => item.id !== id));
   };
 
   const getArticleResult = () => {
-    if(load) {
-      axios.post('/article/retrieve/toModerate')
+    if (load) {
+      axios
+        .post("/article/retrieve/toModerate")
         .then((response) => {
           const data = response.data;
           setArticleList(data);
         })
         .catch(() => {
-          alert('Error retrieving data');
+          alert("Error retrieving data");
         });
     }
-  }
+  };
 
   return (
     <div className={styles.analystQueue}>
       <h1>ANALYSE ARTICLES</h1>
       {getArticleResult()}
-      {articleList.map(article =>{
+      {articleList.map((article) => {
         console.log(article);
       })}
       <ListGroup>
         <ListGroup.Item action onClick={handleShow}>
           Article 1
-          </ListGroup.Item>
+        </ListGroup.Item>
         <ListGroup.Item action onClick={handleShow}>
           Article 2
-          </ListGroup.Item>
+        </ListGroup.Item>
         <ListGroup.Item action onClick={handleShow}>
           Article 3
-          </ListGroup.Item>
+        </ListGroup.Item>
       </ListGroup>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>
-            Article Title
-          </Modal.Title>
+          <Modal.Title>Article Title</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Container>
             <Row>
-              <Col><b>Author</b></Col>
-              <Col><b>Volume</b></Col>
+              <Col>
+                <b>Author</b>
+              </Col>
+              <Col>
+                <b>Volume</b>
+              </Col>
             </Row>
             <Row>
               <Col>First LastName</Col>
               <Col>2</Col>
             </Row>
             <Row>
-              <Col><b>Page no.</b></Col>
-              <Col><b>No. of Pages</b></Col>
+              <Col>
+                <b>Page no.</b>
+              </Col>
+              <Col>
+                <b>No. of Pages</b>
+              </Col>
             </Row>
             <Row>
               <Col>87-93</Col>
               <Col>1236</Col>
             </Row>
             <Row>
-              <Col><b>Year</b></Col>
-              <Col><b>Month</b></Col>
+              <Col>
+                <b>Year</b>
+              </Col>
+              <Col>
+                <b>Month</b>
+              </Col>
             </Row>
             <Row>
               <Col>2008</Col>
               <Col>June</Col>
             </Row>
             <Row>
-              <Col><b>E-Print</b></Col>
-              <Col><b>E-Print Type</b></Col>
+              <Col>
+                <b>E-Print</b>
+              </Col>
+              <Col>
+                <b>E-Print Type</b>
+              </Col>
             </Row>
             <Row>
               <Col>Something</Col>
               <Col>Something</Col>
             </Row>
             <Row>
-              <Col><b>E-Print Class</b></Col>
-              <Col><b>Annote</b></Col>
+              <Col>
+                <b>E-Print Class</b>
+              </Col>
+              <Col>
+                <b>Annote</b>
+              </Col>
             </Row>
             <Row>
               <Col>Something</Col>
@@ -146,7 +173,11 @@ const Analyst = () => {
             <h5>Key Values</h5>
             <Form.Row>
               <Form.Group as={Col} controlId="formGridField">
-                <Form.Control as="select" value={field} onChange={selectFieldHandler}>
+                <Form.Control
+                  as="select"
+                  value={field}
+                  onChange={selectFieldHandler}
+                >
                   <option>Select a field...</option>
                   <option>Title</option>
                   <option>Author</option>
@@ -155,7 +186,11 @@ const Analyst = () => {
                 </Form.Control>
               </Form.Group>
               <Form.Group as={Col} controlId="formGridOperator">
-                <Form.Control as="select" value={operator} onChange={selectOperatorHandler}>
+                <Form.Control
+                  as="select"
+                  value={operator}
+                  onChange={selectOperatorHandler}
+                >
                   <option>Select an operator...</option>
                   <option>Contains</option>
                   <option>Does not contains</option>
@@ -174,7 +209,11 @@ const Analyst = () => {
                     onChange={selectValueHandler}
                   />
                   <InputGroup.Append>
-                    <IconButton onClick={addKeyValueHandler} aria-label="add" style={{ float: "right", margin: "-5px 0 0 0" }}>
+                    <IconButton
+                      onClick={addKeyValueHandler}
+                      aria-label="add"
+                      style={{ float: "right", margin: "-5px 0 0 0" }}
+                    >
                       <AddIcon />
                     </IconButton>
                   </InputGroup.Append>
@@ -183,11 +222,20 @@ const Analyst = () => {
             </Form.Row>
           </Form>
           <ListGroup>
-            {keyValues.map(item => (
-              <InputGroup className="mb-3" style={{ width: "100%", alignItems: "center" }}>
-                <ListGroup.Item>{item.field} {item.operator} {item.value}</ListGroup.Item>
+            {keyValues.map((item) => (
+              <InputGroup
+                className="mb-3"
+                style={{ width: "100%", alignItems: "center" }}
+              >
+                <ListGroup.Item>
+                  {item.field} {item.operator} {item.value}
+                </ListGroup.Item>
                 <InputGroup.Append>
-                  <IconButton onClick={() => removeKeyValueHandler(item.id)} aria-label="remove" style={{ float: "right", margin: "-5px 0 0 0" }}>
+                  <IconButton
+                    onClick={() => removeKeyValueHandler(item.id)}
+                    aria-label="remove"
+                    style={{ float: "right", margin: "-5px 0 0 0" }}
+                  >
                     <RemoveIcon />
                   </IconButton>
                 </InputGroup.Append>
@@ -205,3 +253,4 @@ const Analyst = () => {
 };
 
 export default Analyst;
+
