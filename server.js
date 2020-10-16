@@ -12,7 +12,7 @@ const dev = app.get('env') !== 'production';
 
 require('dotenv').config();
 
-if(dev) {
+if(!dev) {
   app.disable('x-powered-by');
   app.use(compression());
   app.use(morgan('common'));

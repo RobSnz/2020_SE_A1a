@@ -1,1 +1,18 @@
+language: node_js
+
+node_js:
   - 12.16.3
+cache: npm 
+
+install: 
+  - npm i
+
+script:
+  - npm run
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: master
