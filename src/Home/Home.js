@@ -19,7 +19,7 @@ class Home extends React.Component {
 
     this.state = {                          //keeps track of state of users current search
       search: "",
-      dateFrom: new Date("01/01/2020"),
+      dateFrom: new Date("01/01/2000"),
       dateTo: new Date(),
       selectField: 'Nothing Selected...',
       selectOperator: '',
