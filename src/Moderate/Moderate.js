@@ -81,17 +81,21 @@ class Moderate extends React.Component {
   }
 
   updateDetails = (article) => {
-    this.setState({ modelInformation: { title: article.title, 
-    author: article.author, volume: article.volume, pagesNum: article.pagesNum, numOfPages: article.numOfPages,
-    year: article.year, month: article.month, ePrint: article.ePrint, ePrintType: article.ePrintType,
-    ePrintClass: article.ePrintType, annote: article.annote}});
-}
+    this.setState({
+      modelInformation: {
+        title: article.title,
+        author: article.author, volume: article.volume, pagesNum: article.pagesNum, numOfPages: article.numOfPages,
+        year: article.year, month: article.month, ePrint: article.ePrint, ePrintType: article.ePrintType,
+        ePrintClass: article.ePrintType, annote: article.annote
+      }
+    });
+  }
 
   render() {
-    return (
-      <div className={styles.analystQueue}>
-        <h1>MODERATE ARTICLES</h1>
+    let moderatorView;
 
+    if (this.state.articleList.length > 0) {
+      moderatorView =
         <ListGroup>
           {this.state.articleList.map(article => {
             return <div><ListGroup.Item action onClick={(e) => { this.handleOpen(e, article); this.updateDetails(article) }}>
@@ -100,6 +104,15 @@ class Moderate extends React.Component {
             </div>
           })}
         </ListGroup>
+    } else {
+      moderatorView = <h4>There are no articles awaiting moderation.</h4>;
+    }
+
+    return (
+      <div className={styles.analystQueue}>
+        <h1>MODERATE ARTICLES</h1>
+
+        {moderatorView}
 
         <Modal show={this.state.show} onHide={this.handleClose}>
           <Modal.Header closeButton>
