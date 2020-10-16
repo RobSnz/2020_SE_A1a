@@ -76,6 +76,30 @@ class Results extends React.Component {
           if(op == "Contains" && !article.author.toLowerCase().includes(value)) return false;
           else if(op == "Does not contain" && article.author.toLowerCase().includes(value)) return false;
         }
+
+        if(field == "Method") {
+          let methodArticles = article.keyValues.filter(article => {
+            if(article.field == field) return true;
+            return false;
+          })
+
+          for(let x = 0; x < methodArticles.length; x++) {
+            if(op == "Contains" && !methodArticles[x].value.toLowerCase().includes(value)) return false;
+            else if(op == "Does not contain" && methodArticles[x].toLowerCase().includes(value)) return false;
+          }
+        }
+
+        if(field == "Benefit") {
+          let methodArticles = article.keyValues.filter(article => {
+            if(article.field == field) return true;
+            return false;
+          })
+
+          for(let x = 0; x < methodArticles.length; x++) {
+            if(op == "Contains" && !methodArticles[x].value.toLowerCase().includes(value)) return false;
+            else if(op == "Does not contain" && methodArticles[x].toLowerCase().includes(value)) return false;
+          }
+        }
     
         return true;
       });
