@@ -11,7 +11,7 @@ import Col from 'react-bootstrap/Col';
 import DatePicker from "react-datepicker";
 import ListGroup from 'react-bootstrap/ListGroup';
 import "react-datepicker/dist/react-datepicker.css";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 class Home extends React.Component {
   constructor(props) {
@@ -60,18 +60,38 @@ class Home extends React.Component {
   updateSearch(event) {
     this.setState({ search: event.target.value });         //updates value
   }
-  
-  addConstraintHandler() {
-    this.state.constraints.push({field: this.state.selectField, operator: this.state.selectOperator, value: this.state.selectValue, id: Math.random() * 1000 });
 
-    this.setState({ selectField: 'Nothing Selected...',  selectOperator: '', selectValue: '' });
+  addConstraintHandler() {
+    this.state.constraints.push({ field: this.state.selectField, operator: this.state.selectOperator, value: this.state.selectValue, id: Math.random() * 1000 });
+
+    this.setState({ selectField: 'Nothing Selected...', selectOperator: '', selectValue: '' });
   }
 
-  removeConstraintHandler = id => { 
-    this.state.constraints = this.state.constraints.filter(item => item.id !== id); 
+  removeConstraintHandler = id => {
+    this.state.constraints = this.state.constraints.filter(item => item.id !== id);
+    this.setState({ selectField: 'Nothing Selected...', selectOperator: '', selectValue: '' });
   }
 
   render() {
+    let constraintView;
+
+    if (this.state.constraints.length > 0) {
+      constraintView =
+        <ListGroup>
+          {this.state.constraints.map(item => (
+            <InputGroup className="mb-3" style={{ width: "150%", alignItems: "left" }}>
+              <ListGroup.Item>{item.field} {item.operator} {item.value}</ListGroup.Item>
+              <InputGroup.Append>
+                <IconButton onClick={() => this.removeConstraintHandler(item.id)} aria-label="remove" style={{ float: "right", margin: "-5px 0 0 0" }}>
+                  <RemoveIcon />
+                </IconButton>
+              </InputGroup.Append>
+            </InputGroup>
+          ))}
+        </ListGroup>;
+    } else {
+      constraintView = <h4>You currently have no constraints.</h4>;
+    }
     return (
       <div className="Home">
         <div className="lander">
@@ -87,7 +107,7 @@ class Home extends React.Component {
                 />
                 <InputGroup.Append>
                   <IconButton>
-                    <Link to={{ pathname: '/Results', data: this.state }}><SearchIcon aria-label="search" style={{ float: "right", margin: "-5px 0 0 0", color: "grey" }}/></Link>
+                    <Link to={{ pathname: '/Results', data: this.state }}><SearchIcon aria-label="search" style={{ float: "right", margin: "-5px 0 0 0", color: "grey" }} /></Link>
                   </IconButton>
                 </InputGroup.Append>
               </InputGroup>
@@ -96,11 +116,11 @@ class Home extends React.Component {
               <Form>
                 <Form.Row>
                   <Form.Group as={Col} controlId="dateFromPicker">
-                    <Form.Label style={{ float: "left", paddingRight:"10px" }}>DATE FROM</Form.Label>
+                    <Form.Label style={{ float: "left", paddingRight: "10px" }}>DATE FROM</Form.Label>
                     <DatePicker className="dateFontSize" selected={this.state.dateFrom} onChange={this.handleFromDate} />
                   </Form.Group>
                   <Form.Group as={Col} controlId="dateToPicker">
-                    <Form.Label style={{ float: "left", paddingRight:"50px" }}>DATE TO</Form.Label>
+                    <Form.Label style={{ float: "left", paddingRight: "50px" }}>DATE TO</Form.Label>
                     <DatePicker className="dateFontSize" selected={this.state.dateTo} onChange={this.handleToDate} minDate={this.state.dateFrom} />
                   </Form.Group>
                 </Form.Row>
@@ -146,18 +166,7 @@ class Home extends React.Component {
               </Form>
               <div className="constraints">
                 <div className="mainPageHeadings">CONSTRAINTS</div>
-                <ListGroup>
-                  {this.state.constraints.map(item => (
-                    <InputGroup className="mb-3" style={{ width: "150%", alignItems: "left" }}>
-                      <ListGroup.Item>{item.field} {item.operator} {item.value}</ListGroup.Item>
-                      <InputGroup.Append>
-                        <IconButton onClick={() => this.removeConstraintHandler(item.id)} aria-label="remove" style={{ float: "right", margin: "-5px 0 0 0" }}>
-                          <RemoveIcon />
-                        </IconButton>
-                      </InputGroup.Append>
-                    </InputGroup>
-                  ))}
-                </ListGroup>
+                  {constraintView};
               </div>
             </div>
           </div>
