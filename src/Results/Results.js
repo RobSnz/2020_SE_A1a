@@ -83,9 +83,9 @@ class Results extends React.Component {
             return false;
           })
 
-          for(let x = 0; x < methodArticles.length; x++) {
-            if(op == "Contains" && !methodArticles[x].value.toLowerCase().includes(value)) return false;
-            else if(op == "Does not contain" && methodArticles[x].toLowerCase().includes(value)) return false;
+          for(let j = 0; j < methodArticles.length; j++) {
+            if(op == "Contains" && !methodArticles[j].value.toLowerCase().includes(value)) return false;
+            else if(op == "Does not contain" && methodArticles[j].toLowerCase().includes(value)) return false;
           }
         }
 
@@ -95,9 +95,9 @@ class Results extends React.Component {
             return false;
           })
 
-          for(let x = 0; x < methodArticles.length; x++) {
-            if(op == "Contains" && !methodArticles[x].value.toLowerCase().includes(value)) return false;
-            else if(op == "Does not contain" && methodArticles[x].toLowerCase().includes(value)) return false;
+          for(let j = 0; j < methodArticles.length; j++) {
+            if(op == "Contains" && !methodArticles[j].value.toLowerCase().includes(value)) return false;
+            else if(op == "Does not contain" && methodArticles[j].toLowerCase().includes(value)) return false;
           }
         }
     
