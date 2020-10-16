@@ -195,7 +195,7 @@ class Results extends React.Component {
                       Author: {article.author}<br />
                         Year: {article.year}<br />
                     </Card.Text>
-                    <Button variant="dark" variant="primary" action onClick={(e) => { this.handleOpen(e, article); this.updateDetails(article) }}>Details</Button>
+                    <Button variant="dark" action onClick={(e) => { this.handleOpen(e, article); this.updateDetails(article) }}>Details</Button>
                   </Card.Body>
                 </Card>
               </div>
