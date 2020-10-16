@@ -48,7 +48,7 @@ const Analyst = () => {
     setKeyValues([...keyValues, { field: field, operator: operator, value: value, id: Math.random() * 1000 }
     ]);
 
-    if (keyValues !== null) {                 //update UI
+    if(keyValues !== null) {                 //update UI
       setValue("");
       setField("");
       setOperator("");

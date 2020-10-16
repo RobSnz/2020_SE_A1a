@@ -37,7 +37,7 @@ class Results extends React.Component {
   }
 
   componentDidMount = () => {
-    if (this.props.location.data != null) {
+    if(this.props.location.data != null) {
       this.state.constraints = this.props.location.data.constraints;
       this.state.dateFrom = this.props.location.data.dateFrom;
       this.state.dateTo = this.props.location.data.dateTo;
@@ -59,41 +59,28 @@ class Results extends React.Component {
   }
 
   handleFilter() {
-    if (this.state.constraints != null) {
-      for (var x = 0; x < this.state.constraints.length; x++) {
-        var tempVar = this.state.constraints[x];
-        var field = tempVar.field.toLowerCase();
-        var op = tempVar.operator.toLowerCase();
-        var value = tempVar.value.toLowerCase();
-        for (var i = 0; i < this.state.articleList.length; i++) {
-          if (field == "title") {
-            var title = this.state.articleList[i].title.toLowerCase();
-            if (op == "contains") {
-              if (!title.includes(value)) {
-                this.state.articleList.splice(i, 1);
-              }
-            } else if (op == "does not contain") {
-              if (title.includes(value)) {
-                this.state.articleList.splice(i, 1);
-              }
-            }
-          }
-          if (field == "author") {
-            var author = this.state.articleList[i].author.toLowerCase();
-            if (op == "contains") {
-              if (!author.includes(value)) {
-                this.state.articleList.splice(i, 1);
-              }
-            } else if (op == "does not contain") {
-              if (title.includes(value)) {
-                this.state.articleList.splice(i, 1);
-              }
-            }
-          }
+    let tempArr = this.state.articleList;
+    for(let i = 0; i < this.state.constraints.length; i++) {
+      let constraint = this.state.constraints[i];
+      let field = constraint.field;
+      let op = constraint.operator;
+      let value = constraint.value.toLowerCase();
+      
+      tempArr = tempArr.filter(article => {
+        if(field == "Title") {
+          if(op == "Contains" && !article.title.toLowerCase().includes(value)) return false;
+          else if(op == "Does not contain" && article.titletoLowerCase().includes(value)) return false;
         }
-      }
+        
+        if(field == "Author") {
+          if(op == "Contains" && !article.author.toLowerCase().includes(value)) return false;
+          else if(op == "Does not contain" && article.author.toLowerCase().includes(value)) return false;
+        }
+    
+        return true;
+      });
     }
-    this.setState({ potato: "completed" });
+    this.setState({ articleList: tempArr });
   }
 
   getArticleResult = () => {
@@ -103,8 +90,9 @@ class Results extends React.Component {
         this.setState({ articleList: data });
         this.handleFilter();
       })
-      .catch(() => {
-        alert('Error retrieving data');
+      .catch((response) => {
+        console.log(response);
+        alert("Error displaying results. Check log for more info");
       });
   }
 
@@ -195,7 +183,6 @@ class Results extends React.Component {
             <Button onClick={(e) => this.handleCloseConstraints()}>Close</Button>
           </Modal.Footer>
         </Modal>
-
 
         {this.state.articleList.map(article => {
           return <div>
