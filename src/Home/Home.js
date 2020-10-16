@@ -166,7 +166,7 @@ class Home extends React.Component {
               </Form>
               <div className="constraints">
                 <div className="mainPageHeadings">CONSTRAINTS</div>
-                  {constraintView};
+                  {constraintView}
               </div>
             </div>
           </div>
