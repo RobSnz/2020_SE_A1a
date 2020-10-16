@@ -255,8 +255,8 @@ class Analyst2 extends React.Component {
                         </ListGroup>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button onClick={(e) => this.handleSubmit(e, "accepted")}>Accept</Button>
-                        <Button onClick={(e) => this.handleSubmit(e, "rejected")}>Reject</Button>
+                        <Button variant="dark" onClick={(e) => this.handleSubmit(e, "accepted")}>Accept</Button>
+                        <Button variant="dark" onClick={(e) => this.handleSubmit(e, "rejected")}>Reject</Button>
                     </Modal.Footer>
                 </Modal>
             </div>

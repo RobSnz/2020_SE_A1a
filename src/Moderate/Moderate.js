@@ -165,8 +165,8 @@ class Moderate extends React.Component {
             </Container>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={(e) => this.handleSubmit(e, "toAnalyse")}>Accept</Button>
-            <Button onClick={(e) => this.handleSubmit(e, "rejected")}>Reject</Button>
+            <Button variant="dark" onClick={(e) => this.handleSubmit(e, "toAnalyse")}>Accept</Button>
+            <Button variant="dark" onClick={(e) => this.handleSubmit(e, "rejected")}>Reject</Button>
           </Modal.Footer>
         </Modal>
       </div>

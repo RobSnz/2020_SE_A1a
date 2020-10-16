@@ -182,7 +182,7 @@ class Results extends React.Component {
                 <DatePicker className="dateFontSize" selected={this.state.dateTo} onChange={this.handleToDate} minDate={this.state.dateFrom} />
               </Col>
               <Col xs="auto" className="my-1">
-                <Button style={{ margin: "0 0 0 -60px" }} onClick={(e) => { this.handleOpenConstraints(e) }}>Constraints</Button>
+                <Button variant="dark" style={{ margin: "0 0 0 -60px" }} onClick={(e) => { this.handleOpenConstraints(e) }}>Constraints</Button>
               </Col>
             </Form.Row>
           </Form>
@@ -204,7 +204,7 @@ class Results extends React.Component {
             </ListGroup>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={(e) => this.handleCloseConstraints()}>Close</Button>
+            <Button variant="dark" onClick={(e) => this.handleCloseConstraints()}>Close</Button>
           </Modal.Footer>
         </Modal>
 
@@ -219,7 +219,7 @@ class Results extends React.Component {
                       Author: {article.author}<br />
                         Year: {article.year}<br />
                     </Card.Text>
-                    <Button variant="primary" action onClick={(e) => { this.handleOpen(e, article); this.updateDetails(article) }}>Details</Button>
+                    <Button variant="dark" action onClick={(e) => { this.handleOpen(e, article); this.updateDetails(article) }}>Details</Button>
                   </Card.Body>
                 </Card>
               </div>
@@ -278,7 +278,7 @@ class Results extends React.Component {
             </Container>
           </Modal.Body>
           <Modal.Footer>
-            <Button onClick={(e) => this.handleClose()}>Close</Button>
+            <Button variant="dark" onClick={(e) => this.handleClose()}>Close</Button>
           </Modal.Footer>
         </Modal>
       </div>
